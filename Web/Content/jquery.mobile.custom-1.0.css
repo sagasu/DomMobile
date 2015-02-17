@@ -1,0 +1,165 @@
+/* PRZECI¥¯ENIA STYLI JQUERY MOBILE, plik jquery.mobile.structure-1.0.css */
+	/* LINIA 412 */
+.ui-btn-down-c {
+	border: 1px solid 		#CCC /*taki by³ 808080*/ /*{c-bdown-border}*/;
+	background: 			#fdfdfd /*{c-bdown-background-color}*/;
+	font-weight: bold;
+	color: 					#111111 /*{c-bdown-color}*/;
+	text-shadow: 0 /*{c-bdown-shadow-x}*/ 1px /*{c-bdown-shadow-y}*/ 1px /*{c-bdown-shadow-radius}*/ #ffffff /*{c-bdown-shadow-color}*/;
+	background-image: -webkit-gradient(linear, left top, left bottom, from( #eee /*{c-bdown-background-start}*/), to( #fdfdfd /*{c-bdown-background-end}*/)); /* Saf4+, Chrome */
+	background-image: -webkit-linear-gradient(#eee /*{c-bdown-background-start}*/, #fdfdfd /*{c-bdown-background-end}*/); /* Chrome 10+, Saf5.1+ */
+	background-image:    -moz-linear-gradient(#eee /*{c-bdown-background-start}*/, #fdfdfd /*{c-bdown-background-end}*/); /* FF3.6 */
+	background-image:     -ms-linear-gradient(#eee /*{c-bdown-background-start}*/, #fdfdfd /*{c-bdown-background-end}*/); /* IE10 */
+	background-image:      -o-linear-gradient(#eee /*{c-bdown-background-start}*/, #fdfdfd /*{c-bdown-background-end}*/); /* Opera 11.10+ */
+	background-image:         linear-gradient(#eee /*{c-bdown-background-start}*/, #fdfdfd /*{c-bdown-background-end}*/);
+}
+
+	/* LINIA 730 */
+.ui-btn-active {
+	border: 1px solid 		#CCC /*taki by³ #155678*/ /*{global-active-border}*/;
+	background: 			#4596ce /*{global-active-background-color}*/;
+	font-weight: bold;
+	color: 					#fff /*{global-active-color}*/;
+	cursor: pointer;
+	text-shadow: 0 /*{global-active-shadow-x}*/ -1px /*{global-active-shadow-y}*/ 1px /*{global-active-shadow-radius}*/ #999 /*taki by³ #145072*/ /*{global-active-shadow-color}*/;
+	text-decoration: none;
+	background-image: -webkit-gradient(linear, left top, left bottom, from( #85bae4 /*{global-active-background-start}*/), to( #5393c5 /*{global-active-background-end}*/)); /* Saf4+, Chrome */
+	background-image: -webkit-linear-gradient(#85bae4 /*{global-active-background-start}*/, #5393c5 /*{global-active-background-end}*/); /* Chrome 10+, Saf5.1+ */
+	background-image:    -moz-linear-gradient(#85bae4 /*{global-active-background-start}*/, #5393c5 /*{global-active-background-end}*/); /* FF3.6 */
+	background-image:     -ms-linear-gradient(#85bae4 /*{global-active-background-start}*/, #5393c5 /*{global-active-background-end}*/); /* IE10 */
+	background-image:      -o-linear-gradient(#85bae4 /*{global-active-background-start}*/, #5393c5 /*{global-active-background-end}*/); /* Opera 11.10+ */
+	background-image:         linear-gradient(#85bae4 /*{global-active-background-start}*/, #5393c5 /*{global-active-background-end}*/);
+	font-family: Helvetica, Arial, sans-serif /*{global-font-family}*/;
+}
+
+	/* LINIA 746 */
+.ui-btn-active a.ui-link-inherit {
+	color: 					#2F3E46 /*{global-active-color}*/;
+	text-shadow: 0 /*{global-active-shadow-x}*/ -1px /*{global-active-shadow-y}*/ 1px /*{global-active-shadow-radius}*/ #FFF /*{global-active-shadow-color}*/;
+}
+
+	/* LINIA 965 */
+.ui-icon-radio-on {
+	background-position: -719px 50%;
+}
+
+	/* LINIA 980 */
+.ui-checkbox-on .ui-icon,
+.ui-radio-on .ui-icon {
+	background-color: #7D7D7D/*taki by³ #4596ce*/ /*{global-active-background-color}*/; /* NOTE: this hex should match the active state color. It's repeated here for cascade */
+}
+
+	/* LINIA 1110 */
+.ui-shadow-inset {
+	-moz-box-shadow: inset 0px 1px 4px 		rgba(0,0,0,.2);
+	-webkit-box-shadow: inset 0px 1px 4px 	rgba(0,0,0,.2);
+	box-shadow: inset 0px 1px 4px 			rgba(0,0,0,.2);
+	border : 1px solid #B3B3B3 !important;
+}
+
+	/* LINIA 1115 */
+.ui-icon-shadow {
+	-moz-box-shadow: 0px 0px 1px 1px 				rgba(0,0,0,.2);
+	-webkit-box-shadow: 0px 0px 1px 1px 			rgba(0,0,0,.2);
+	box-shadow: 0px 0px 1px 1px 					rgba(0,0,0,.2);
+}
+
+	/* LINIA 1124 */
+.ui-focus {
+	/*-moz-box-shadow: 0px 0px 12px 		#387bbe*/ /*{global-active-background-color}*/;
+	/*-webkit-box-shadow: 0px 0px 12px 	#387bbe*/ /*{global-active-background-color}*/;
+	/*box-shadow: 0px 0px 12px 			#387bbe*/ /*{global-active-background-color}*/;
+	box-shadow : 0px 0px 0px 0px;
+	-moz-box-shadow: 0px 0px 0px 0px;
+	-o-box-shadow: 0px 0px 0px 0px;
+	-webkit-box-shadow: 0px 0px 0px 0px;
+	border : 1px solid #B3B3B3;
+}
+
+/* ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ */
+ 
+ /* MOJE STYLE */
+div.ui-btn-up-c.ui-btn-corner-all, div.ui-btn-hover-c.ui-btn-corner-all {
+	background : #FFF;
+	/* background : #666666; */
+	/* bottom : 40px; */
+	border : 1px solid #FFF;
+	border-radius : 0 0 0 0;
+	box-shadow : none;
+    color : #FFFFFF;
+	left : 0px;
+	margin : 0px -15px;
+	padding : 5px 0px;
+	position : relative;
+	text-shadow : none;
+	z-index : 1;
+}
+
+div.ui-btn.ui-btn-up-c span.ui-btn-inner.ui-btn-corner-all, 
+div.ui-btn.ui-btn-hover-c span.ui-btn-inner.ui-btn-corner-all {
+	background : #FF6600;
+	font : 14px Arial;
+	/*height : 40px;
+	line-height : 40px;*/
+	margin : 0px auto;
+	padding : 12px 8px;
+	width : 132px;
+}
+
+div.ui-btn.ui-btn-hover-c span.ui-btn-inner.ui-btn-corner-all {
+	background : #D35400;
+}
+
+.ui-page .ui-content div.ui-radio label.ui-btn-active {
+	background : #999;
+	border : none;
+}
+
+.ui-page .ui-content div.ui-radio label.ui-radio-off {
+	background : #EEE;
+	border : none;
+}
+
+.ui-page .ui-content .marketSegment label.GlossaryAsRadioLabelClass.ui-radio-off {
+	background : #FFF;
+	border : none;
+}
+
+.ui-page .ui-content div.fieldsetclass input.ui-input-text {
+	border-radius : 0px;
+	box-shadow : 0px 0px 0px 0px;
+	-moz-box-shadow: 0px 0px 0px 0px;
+	-o-box-shadow: 0px 0px 0px 0px;
+	-webkit-box-shadow: 0px 0px 0px 0px;
+}
+
+.ui-focus input {border : 1px solid #B3B3B3 !important;}
+.ui-li:first-child, .ui-li.ui-field-contain:first-child { border-top-width: 0px; }
+ul.gallery {margin : 0px;padding : 0px;}
+ul.gallery li {float : left;list-style : none;margin : 4px;}
+
+.ui-btn-active, .ui-btn-down-c {border-bottom : none;border-left : none;border-right : none;text-shadow : none;}
+input.ui-input-text { background : none;box-shadow : 0px 0px 0px 0px !important;text-shadow : none; }
+
+/* QUARTIC */
+div.quartic_rec {margin : 40px -15px 0px;padding : 0px 15px;}
+div.quartic_rec div.quartic_header {border-bottom : 1px solid #CCC;color : #EC6E00;font : bold 16px Arial;margin : 0px -15px 5px;padding : 0px 15px 5px;}
+div.quartic_rec ul {margin : 0px;padding : 0px;}
+div.quartic_rec ul li {list-style : none;margin : 0px;}
+div.quartic_rec ul.quartic_content li.quartic_product {border : 0px;display : block;height : 60px;margin : 0px -15px;padding : 10px 15px;
+	background: 			#EEEEEE /*{c-bdown-background-color}*/;
+	color: 					#111111 /*{c-bdown-color}*/;
+	text-shadow: 0 /*{c-bdown-shadow-x}*/ 1px /*{c-bdown-shadow-y}*/ 1px /*{c-bdown-shadow-radius}*/ #ffffff /*{c-bdown-shadow-color}*/;
+	background-image: -webkit-gradient(linear, left top, left bottom, from( #fdfdfd /*{c-bdown-background-start}*/), to( #EEEEEE /*{c-bdown-background-end}*/)); /* Saf4+, Chrome */
+	background-image: -webkit-linear-gradient(#fdfdfd /*{c-bdown-background-start}*/, #EEEEEE /*{c-bdown-background-end}*/); /* Chrome 10+, Saf5.1+ */
+	background-image:    -moz-linear-gradient(#fdfdfd /*{c-bdown-background-start}*/, #EEEEEE /*{c-bdown-background-end}*/); /* FF3.6 */
+	background-image:     -ms-linear-gradient(#fdfdfd /*{c-bdown-background-start}*/, #EEEEEE /*{c-bdown-background-end}*/); /* IE10 */
+	background-image:      -o-linear-gradient(#fdfdfd /*{c-bdown-background-start}*/, #EEEEEE /*{c-bdown-background-end}*/); /* Opera 11.10+ */
+	background-image:         linear-gradient(#fdfdfd /*{c-bdown-background-start}*/, #EEEEEE /*{c-bdown-background-end}*/);}
+div.quartic_rec ul.quartic_content li.quartic_product div.quartic_imagediv, 
+div.quartic_rec ul.quartic_content li.quartic_product ul.quartic_description {display : inline-block;float : left;height : 60px;overflow : hidden;}
+div.quartic_rec ul.quartic_content li.quartic_product div.quartic_imagediv {margin : 0px 10px 0px 0px;}
+div.quartic_rec ul.quartic_content li.quartic_product ul.quartic_description {margin : 6px 0px 0px 0px;width : 60%;}
+div.quartic_rec ul.quartic_content li.quartic_product ul.quartic_description, 
+div.quartic_rec ul.quartic_content li.quartic_product ul.quartic_description a {color : #666;font : 12px Arial;text-decoration : none;}
+div.quartic_rec ul.quartic_content li.quartic_product ul.quartic_description li.quartic_price {font-weight : bold;}

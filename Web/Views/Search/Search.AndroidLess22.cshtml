@@ -1,0 +1,30 @@
+﻿@using Trader.Web.Models.Search
+@using Trader.Web.Global
+@using Trader.Model.Glossaries.Providers
+
+@model SearchViewModel
+@{
+    var category = CategoryProvider.Categories.SingleOrDefault(x => x.Id == Model.CategoryId);
+    var categoryName = string.Empty;
+    if (category != null)
+    {
+        categoryName = category.Name;
+    }
+    ViewBag.Title = string.Format("Znajdź {0} | Domiporta.pl", categoryName);
+    Layout = "~/Views/Shared/_Layout.AndroidLess22.cshtml";
+}
+
+@section HeaderSection {
+    @Html.Partial(MVC.Shared.Views.Header_Mobile)
+}
+
+@section FooterSection{
+    @Html.Partial(MVC.Shared.Views.Footer_Mobile)
+}
+
+@* using mvc helper with a view does not work here*@
+@if (Model.CategoryId == default(int)) { Response.Redirect(Url.Action("Index", "Home")); }
+
+@Html.EditorForModel("SearchCriteria")
+
+@* Quartic Raises errors here*@

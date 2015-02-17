@@ -1,0 +1,45 @@
+﻿<#@ template debug="false" hostspecific="true" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="System.Xml" #>
+<#@ import namespace="System.Xml" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Linq" #>
+
+<#@ output extension=".cs" #>
+/*
+This is auto-generated class, modify t4 template, instead of it. There is a test for a logic in a template: ConfigurationPocoTemplateCodeTest
+*/
+
+namespace Trader.Services.Helpers
+{
+    public class ConfigurationPoco
+    {
+		<#
+			foreach (string name in this.GetNames())   
+			{
+		#>
+			public string <#= name #> { get; set; }
+		<# 
+			}
+		#>
+	}
+}
+
+<#+
+        public IEnumerable<string> GetNames()
+        {
+            var doc = new XmlDocument();
+
+            // This is configuration for tests
+            // var absolutePath = Directory.GetCurrentDirectory().Replace("\\Services.Tests\\bin\\Debug", "\\Web\\Web.config");
+
+            // This is configuration for template
+            string absolutePath = Host.ResolvePath("../../Web/Web.config");
+
+            doc.Load(absolutePath);
+
+            return (from XmlNode node in doc.SelectNodes("/configuration/appSettings/add")
+                    select node.Attributes["key"].InnerText.Replace(":", string.Empty)).ToList();
+        }
+#>

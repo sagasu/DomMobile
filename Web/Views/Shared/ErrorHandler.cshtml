@@ -1,0 +1,25 @@
+﻿@using Trader.Web.Global
+@using Trader.Web.Helpers
+
+<script type="text/javascript">
+    $( '#@Consts.JavascriptIds.MainBodyId' ).live( 'pageinit',function(event){
+        @if (! string.IsNullOrEmpty(ViewBag.ErrorMessage))
+        {
+            @:$("#@Consts.JavascriptIds.Message").message({type:"error", message:'@ViewBag.ErrorMessage'});
+        }
+        @if (!string.IsNullOrEmpty(ViewBag.InfoMessage))
+        {
+            @:$("#@Consts.JavascriptIds.Message").message({type:"info", message:'@ViewBag.InfoMessage'});
+        }
+        @if (ViewData[MessageHelper.InfoMessage] != null)
+        {
+            @:$("#@Consts.JavascriptIds.Message").message({type:"info", message:'@ViewData[MessageHelper.InfoMessage]'});
+        }
+        @if (ViewData[MessageHelper.ErrorMessage] != null)
+        {
+            @:$("#@Consts.JavascriptIds.Message").message({type:"error", message:'@ViewData[MessageHelper.ErrorMessage]'});
+        }
+        $.mobile.loadingMessage  = 'czekaj...';
+        $.mobile.pageLoadErrorMessage   = 'błąd podczas ładowania strony...';
+    });
+</script>

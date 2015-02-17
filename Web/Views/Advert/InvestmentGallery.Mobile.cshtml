@@ -1,0 +1,32 @@
+﻿@using Trader.Web.Models.Advert
+@using Trader.Common
+@using Trader.Web.Global
+@using Trader.Web.Extensions
+
+@model AdvertViewModel
+
+@{
+    ViewBag.Title = "Galeria";
+    ViewBag.AdditionalMainBodyCss = "galleryMainBody";
+    Layout = "~/Views/Shared/_Layout.Mobile.cshtml";
+}
+
+@section HeaderSection {
+    @{ var returnUrl = Url.Url(MVC.Advert.InvestmentDetails(), Model.BuildInvestment()); }
+    <div class="galleryReturnToAdvert">
+        <a class="galleryLinkClass" data-role="button" data-ajax="false" href='@returnUrl'></a>
+    </div>
+}
+
+<div class="pictureBackground">
+    @if (Model.IsInvestment && !string.IsNullOrEmpty(Model.InvestmentPicture))
+    {
+        <div class="picture">
+            <img alt="" src="@Model.InvestmentPicture" />
+        </div>
+    }
+    else
+    { 
+        <div>Nie znaleziono zdjęć</div>
+    }
+</div>

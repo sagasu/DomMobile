@@ -1,0 +1,41 @@
+﻿@using Trader.Common
+@using Trader.Web.Global
+@using Trader.Web.Helpers
+
+@model RangeCriteria
+
+@{
+    var displayName = ViewData.ModelMetadata.DisplayName.Replace(" ", "") + "labelId";
+    var glossaryFilterNameFrom = string.Concat(ViewData.TemplateInfo.HtmlFieldPrefix, "_", StaticReflectionPoco.RangeCriteria.From, "_", StaticReflectionPoco.GlossaryFilter1.SelectedValue).Replace(".", "_");
+    var glossaryFilterNameTo = string.Concat(ViewData.TemplateInfo.HtmlFieldPrefix, "_", StaticReflectionPoco.RangeCriteria.To, "_", StaticReflectionPoco.GlossaryFilter1.SelectedValue).Replace(".", "_");
+}
+
+<div id="@(displayName)">@Html.LabelFor(x => x)</div>
+
+<div data-role="fieldcontain" class="fieldsetclass rangeclass">
+    @Html.LabelFor(x=>x.From)
+    @Html.EditorFor(x => x.From)
+
+    @Html.LabelFor(x=>x.To)
+    @Html.EditorFor(x => x.To)
+</div>
+
+@* ie 9 - windows phone 7.5 has it's own autofocus *@
+@{
+    var isFocusEnabled = HttpContext.Current.Request.Browser.IsBrowser("IEMobile") ? HttpContext.Current.Request.Browser.MajorVersion >= 9 ? false : true : true;
+}
+
+@if (isFocusEnabled)
+{
+    <script type="text/javascript">
+        $('#@Consts.JavascriptIds.MainBodyId').live('#@Consts.JavascriptEvents.Pagecreate', function (event) {
+            $("#@(glossaryFilterNameFrom)").bind("click", function (event, ui) {
+                $(window).scrollTop($('#@(displayName)').position().top);
+            });
+
+            $("#@(glossaryFilterNameTo)").bind("click", function (event, ui) {
+                $(window).scrollTop($('#@(displayName)').position().top);
+            });
+        });
+    </script>
+}

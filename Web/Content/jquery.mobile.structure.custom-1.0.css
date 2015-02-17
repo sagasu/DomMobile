@@ -1,0 +1,461 @@
+/* PRZECI¥¯ENIA STYLI JQUERY MOBILE, plik jquery.mobile.structure-1.0.css */
+.mainBody.ui-content {
+	padding : 15px 10px;
+}
+
+.mainBody.ui-content .ui-listview {
+    margin : -15px -10px;
+}
+
+.groupedSearchResultList.ui-listview .middleAdvertisement {
+    padding : 0px;
+}
+
+	/* LINIA 23 */
+.ui-mobile .ui-page-active { display: block; overflow: visible; background : #FFF; }
+
+	/* LINIA 73 */
+.ui-page .ui-header { position: relative;
+	background-image: linear-gradient(top, #FFFFFF 15%, #E5E5E5 100%);
+	background-image: -o-linear-gradient(top, #FFFFFF 15%, #E5E5E5 100%);
+	background-image: -moz-linear-gradient(top, #FFFFFF 15%, #E5E5E5 100%);
+	background-image: -webkit-linear-gradient(top, #FFFFFF 15%, #E5E5E5 100%);
+	background-image: -ms-linear-gradient(top, #FFFFFF 15%, #E5E5E5 100%);
+	background-image: -webkit-gradient(
+		linear,
+		left top,
+		left bottom,
+		color-stop(0.15, #FFFFFF),
+		color-stop(1, #E5E5E5)
+	);
+	border : none;
+	border-bottom : 1px solid #CCC;
+	display : table;
+	height : 46px;
+	margin : 0px 0px 1px 0px;
+}
+
+	/* LINIA 139 */
+.ui-icon {
+	height: 20px;
+	width: 20px;
+}
+
+	/* LINIA 464 */
+.ui-btn {
+    margin: 0px;
+}
+ 
+ 	/* LINIA 475 */
+.ui-btn-icon-left .ui-icon, .ui-btn-icon-right .ui-icon { position: absolute; top: 50%; }
+
+	/* LINIA 476 */
+.ui-btn-icon-top .ui-icon, .ui-btn-icon-bottom .ui-icon { position: absolute; left: 50%; }
+
+	/* LINIA 495 */
+.ui-btn-hidden { position: absolute; top: 0; left: 0; width: 100%; height: 100%; -webkit-appearance: button; opacity: 0; /*by³o .1*/ cursor: pointer; background: #fff; background: rgba(255,255,255,0); filter: Alpha(Opacity=.0001); font-size: 1px; border: none; line-height: 999px; }
+
+	/* LINIA 516 */
+.ui-controlgroup, fieldset.ui-controlgroup { padding: 0; margin: 0px; border : 0px; }
+ 
+ 	/* LINIA 569 */
+.ui-checkbox .ui-icon, .ui-radio .ui-icon { top: 48%; }
+
+	/* LINIA 570 */
+.ui-checkbox .ui-btn-icon-left .ui-icon, .ui-radio .ui-btn-icon-left .ui-icon {left: 19px; }
+
+	/* LINIA 573 */
+.ui-checkbox input,.ui-radio input { position:absolute; left:20px; top:56%; width: 10px; height: 10px; margin : -5px 0 0 5px; outline: 0 !important; z-index: 1;
+	-bracket-:hack(;
+		margin : -10px 0px 0px 0px;
+	); }
+
+	/* LINIA 575 */
+.ui-field-contain { border-bottom-width: 0px; border-color : #FFF; padding: 0; margin: 10px 0; zoom : 0; }
+
+	/* LINIA 614 */
+.ui-field-contain .ui-select { width: 0/*by³o 60%*/; display: inline-block; }
+
+	/* LINIA 620 */
+input.ui-input-text { -webkit-appearance: none;background : #FFF; }
+
+	/* LINIA 630 */
+.ui-field-contain label.ui-input-text  { vertical-align: top; display: block;  width: 20%;  margin: 0 2% 0 0; }
+
+	/* LINIA 665 */
+.ui-li, .ui-li.ui-field-contain {
+    border: 0px;
+    display: block;
+    margin: 0;
+    overflow: visible;
+    position: relative;
+    text-align: left;
+}
+
+	/* LINIA 652 */
+.ui-li .ui-btn-inner a.ui-link-inherit, .ui-li-static.ui-li { padding: 12px 15px 11px; display: block; font-size : 16px; }
+
+	/* LINIA 754 */
+.ui-btn-inner {border : 0px;}
+/* ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ */
+ 
+ /* MOJE STYLE */
+.ui-header .headerWithMagnifierAndList, .ui-header div.logo, .ui-header .headerWithMagnifier {background-image:url(/Content/images/linear_bg_2.png);}
+.ui-header div.logo {height : auto;padding : 0px;}
+.ui-header div.logo img {height : 22px !important;max-height : 22px;line-height : 0px;padding : 10px 0px 0px 10px;}
+.headerWithMagnifier, .mainHeader {font-size: 0em !important;}
+.ui-header .magnifierAndReturnToResults {}
+.ui-header div.logo, .ui-header .magnifierAndReturnToResults, .ui-header div.magnifier, .ui-header div.returnToResultsClass {display : table-cell;vertical-align : middle;width : 100%;}
+.ui-header div.magnifier, .ui-header div.returnToResultsClass {height : 46px;text-align : right;vertical-align : top;}
+.ui-header div.magnifier a, .ui-header div.returnToResultsClass a {background : none;border : 0px;border-left : 1px solid #CCC;border-radius : 0px;height: 100%;}
+.ui-header div.magnifier a span {padding : 13px 5px 0px;}
+.ui-header div.returnToResultsClass a span {margin : 0px;padding : 16px 6px 0px;}
+.ui-content .categoryList .categoryListElement.ui-btn-active {
+	background-image: linear-gradient(top, #ECECEC 15%, #DADADA 100%);
+	background-image: -o-linear-gradient(top, #ECECEC 15%, #DADADA 100%);
+	background-image: -moz-linear-gradient(top, #ECECEC 15%, #DADADA 100%);
+	background-image: -webkit-linear-gradient(top, #ECECEC 15%, #DADADA 100%);
+	background-image: -ms-linear-gradient(top, #ECECEC 15%, #DADADA 100%);
+	background-image: -webkit-gradient(
+		linear,
+		left top,
+		left bottom,
+		color-stop(0.15, #ECECEC),
+		color-stop(1, #DADADA)
+	);
+}
+.ui-page .ui-footer {background : #EBEBEB;border : none;border-top : 1px solid #E8E8E8;color : #999;padding : 5px 0px;text-align : center;}
+.ui-page .ui-footer a {color : #336699;font : 11px Arial;box-shadow : none;}
+.ui-page .ui-footer a span {padding : 0px;}
+.ui-page .ui-footer div {color : #999;font : 10px Arial;text-shadow : none;}
+.ui-page .ui-footer .ui-btn-corner-all {background : transparent;border : none;border-radius : 0px;text-shadow : none;}
+.ui-field-contain { padding: .5em 0; margin: 0; border-bottom-width: 1px; overflow: visible; }
+/*autocomplete*/
+.ui-autocomplete {background : #FFF;border : 1px solid #C6C5C5;border-radius : 0px;margin : 0px;padding : 0px;width: 50% !important;}
+.ui-autocomplete li {list-style : none;margin : 3px 0px;}
+.ui-autocomplete li a {display : block;font-size : 16px;padding : 8px 5px;}
+.ui-autocomplete li a:Hover, .ui-autocomplete li:Hover{background : #333;}
+.ui-autocomplete li a:Hover {border-radius : 0px;color : #FFF;}
+
+div.rangeclass {display : table;width : auto;}
+div.rangeclass input.ui-input-text, div.rangeclass label.ui-input-text {display : inline-table;margin : 0px 20px 0px 2px;width : auto;vertical-align : middle;}
+div.rangeclass input.ui-input-text {}
+div.rangeclass input.ui-input-text {width : 90px;}
+
+div.marketSegment div.ui-radio label, div.marketSegment div.ui-radio label.ui-radio-off {background : none;border : none;border-radius : 0px;}
+.ui-checkbox .ui-corner-bottom, .ui-checkbox .ui-corner-top {background : none;border : 0px;border-radius : 0px;}
+
+.ui-icon-checkbox-off, .ui-icon-radio-off {
+	background: 			#DDDDDD /*{e-bdown-background-color}*/;
+	text-shadow: 0 /*{e-bdown-shadow-x}*/ 1px /*{e-bdown-shadow-y}*/ 1px /*{e-bdown-shadow-radius}*/ 	#ffffff /*{e-bdown-shadow-color}*/;
+	background-image: -webkit-gradient(linear, left top, left bottom, from( #DDDDDD /*{e-bdown-background-start}*/), to( #E6E6E6 /*{e-bdown-background-end}*/)); /* Saf4+, Chrome */
+	background-image: -webkit-linear-gradient(#DDDDDD /*{e-bdown-background-start}*/, #E6E6E6 /*{e-bdown-background-end}*/); /* Chrome 10+, Saf5.1+ */
+	background-image:    -moz-linear-gradient(#DDDDDD /*{e-bdown-background-start}*/, #E6E6E6 /*{e-bdown-background-end}*/); /* FF3.6 */
+	background-image:     -ms-linear-gradient(#DDDDDD /*{e-bdown-background-start}*/, #E6E6E6 /*{e-bdown-background-end}*/); /* IE10 */
+	background-image:      -o-linear-gradient(#DDDDDD /*{e-bdown-background-start}*/, #E6E6E6 /*{e-bdown-background-end}*/); /* Opera 11.10+ */
+	background-image:         linear-gradient(#DDDDDD /*{e-bdown-background-start}*/, #E6E6E6 /*{e-bdown-background-end}*/);
+}
+
+.ui-field-contain label {display : block;}
+
+/*search panel*/
+form .ui-field-contain div.ui-select {display : block;width : 100%;/*width : 60%;*/}
+form .ui-field-contain label {display : table-cell;}
+
+/*adding list*/
+.groupedSearchResultList.ui-listview .searchResultElement.ui-btn-active, 
+.groupedSearchResultList.ui-listview .groupedSearchResultElement.ui-btn-active, 
+.investmentSearchResultList.ui-listview .investmentSearchResultElement.ui-btn-active {
+	border: 0px/*{c-bhover-border}*/;
+	background: 			#dadada /*{c-bhover-background-color}*/;
+	font-weight: bold;
+	color: 					#101010 /*{c-bhover-color}*/;
+	text-shadow: 0 /*{c-bhover-shadow-x}*/ 1px /*{c-bhover-shadow-y}*/ 1px /*{c-bhover-shadow-radius}*/ #fff /*{c-bhover-shadow-color}*/;
+	background-image: -webkit-gradient(linear, left top, left bottom, from( #ededed /*{c-bhover-background-start}*/), to( #dadada /*{c-bhover-background-end}*/)); /* Saf4+, Chrome */
+	background-image: -webkit-linear-gradient(#ededed /*{c-bhover-background-start}*/, #dadada /*{c-bhover-background-end}*/); /* Chrome 10+, Saf5.1+ */
+	background-image:    -moz-linear-gradient(#ededed /*{c-bhover-background-start}*/, #dadada /*{c-bhover-background-end}*/); /* FF3.6 */
+	background-image:     -ms-linear-gradient(#ededed /*{c-bhover-background-start}*/, #dadada /*{c-bhover-background-end}*/); /* IE10 */
+	background-image:      -o-linear-gradient(#ededed /*{c-bhover-background-start}*/, #dadada /*{c-bhover-background-end}*/); /* Opera 11.10+ */
+	background-image:         linear-gradient(#ededed /*{c-bhover-background-start}*/, #dadada /*{c-bhover-background-end}*/);
+}
+.groupedSearchResultList.ui-listview .searchResultElement {border : 0px;}
+.searchResultHeader .searchResultHeaderElement a.searchResultHeaderLink {background : #FFF;font : 11px Arial;white-space : normal;}
+.searchResultHeader .searchResultHeaderElement a.searchResultHeaderLink span {color : #336699;display : block;font-weight : bold;}
+.searchResultHeader .searchResultHeaderElement a.searchResultHeaderLink span.searchResultsNumberOfFoundAdverts {color : #2F3E46;display : inline;font-weight : bold;}
+.searchOptionDiv.ui-field-contain {margin : 10px 0px 5px;}
+.searchOptionDiv .ui-field-contain {display : table;text-align : right;width : 100%;}
+.searchOptionDiv .ui-field-contain label {width : 100%;}
+#DistrictSelectDiv.ui-field-contain .ui-select a#DistrictSelect_SelectedId-button, 
+.searchOptionDiv.ui-field-contain .ui-select a#SearchOptions_OrderBy_SelectedId-button {background : none;border : none;border-radius : 0px;box-shadow : none;font-weight : normal;text-shadow : none;width : auto;}
+#DistrictSelectDiv.ui-field-contain .ui-select span.ui-btn-inner.ui-btn-corner-all, 
+.searchOptionDiv .ui-field-contain .ui-select span.ui-btn-inner.ui-btn-corner-all {background : none;border : 1px solid #CDC3B7;border-radius : 0px;box-shadow : none;color : #3F3731;height : 24px;line-height : 24px;text-align : left;width : 190px;}
+#DistrictSelectDiv.ui-field-contain .ui-select span.ui-btn-inner.ui-btn-corner-all {border : 1px solid #B3B3B3;font-size : 16px;height : auto;margin : 0px;padding : 4px 5px;width : 60%;}
+#DistrictSelectDiv.ui-field-contain .ui-select div.ui-btn-up-c.ui-btn-corner-all, #DistrictSelectDiv.ui-field-contain .ui-select div.ui-btn-hover-c.ui-btn-corner-all {font-size : 16px;margin : 0px;padding : 0px 0px;}
+#DistrictSelectDiv.ui-field-contain .ui-select span.ui-btn-inner.ui-btn-corner-all span.ui-btn-tex, 
+.searchOptionDiv .ui-field-contain .ui-select span.ui-btn-inner.ui-btn-corner-all span.ui-btn-text {padding : 0px 30px 0px 5px;}
+#DistrictSelectDiv.ui-field-contain .ui-select span.ui-btn-inner.ui-btn-corner-all span.ui-btn-text {}
+#DistrictSelectDiv..ui-field-contain .ui-select span.ui-btn-inner.ui-btn-corner-all span.ui-icon, 
+.searchOptionDiv .ui-field-contain .ui-select span.ui-btn-inner.ui-btn-corner-all span.ui-icon {right : 5px;}
+.searchOptionDiv .ui-field-contain .ui-select div.ui-btn {background : none;border-radius : 0px;box-shadow : none;margin : 0px 0px 0px 5px;}
+.searchOptionDiv .ui-field-contain .ui-select span.ui-btn-inner {padding : 5px 45px 5px 5px;}
+.ui-field-contain label, .ui-field-contain div.ui-select {box-shadow : none;display : table-cell;text-shadow : none;vertical-align : middle;padding : 0px;}
+.ui-field-contain label {padding : 0px 10px 0px 0px;}
+form .ui-field-contain label.selectLabel {line-height : 1.4;}
+.ui-field-contain select.DodawanieFormularzOdstep {background : #FFF;border : 1px solid #CDC3B7;padding : 5px;}
+.searchResultElement div.ui-btn-text, .groupedSearchResultElement div.ui-btn-text, .investmentSearchResultElement div.ui-btn-text {display : table;width : 99%;}
+.groupedImage, .investmentImageSpan, .groupedImagePrimary {background : #FFF;display: block;float : left;margin : 0px 10px 0px 0px;max-height : 60px;min-height : 60px;min-width : 80px;overflow : hidden;position : relative;text-align : center;width : 80px;}
+.groupedImage span {display : inline-block;text-align : center;padding : 20px 0px 0px 0px;}
+.investmentImageSpan img {max-height : 60px;}
+.searchResultElement div.ui-btn-text img.searchResultElementPicture, .groupedSearchResultElement div.ui-btn-text img.groupedSearchResultElementPicture, .investmentSearchResultElement div.ui-btn-text img.investmentSearchResultElementPicture {float : none;margin : 0px auto;}
+.searchResultElement div.ui-btn-text img, .searchResultElement div.ui-btn-text a, 
+.groupedSearchResultElement div.ui-btn-text img, .groupedSearchResultElement div.ui-btn-text span.groupedSearchResultElement, .groupedSearchResultElement div.ui-btn-text a.groupedSearchResultElementLink, 
+.investmentSearchResultElement div.ui-btn-text img, .investmentSearchResultElementPicture div.ui-btn-text span.groupedSearchResultElement {display : block;float : left;position : relative;}
+.searchResultElement div.ui-btn-text a.searchResultElementLink, 
+.groupedSearchResultElement div.ui-btn-text a.groupedSearchResultElementLink, 
+.investmentSearchResultElement div.ui-btn-text a.investmentSearchResultElementLink {display : inline-block;font : normal 12px Arial;padding : 10px 10px 15px 10px;position : relative;width : 100%;}
+.searchResultElement div.ui-btn-text a.searchResultElementLink span.searchResultLinkGroup, 
+.groupedSearchResultElement div.ui-btn-text a.groupedSearchResultElementLink span.searchResultLinkGroupPrimary {float : left;}
+.searchResultLinkGroupPrimary, .searchResultLinkGroup {display : block;width : 50%;white-space : normal;}
+.searchResultElement div.ui-btn-text a.searchResultElementLink span.searchResultCityDistrict, 
+.searchResultElement div.ui-btn-text a.searchResultElementLink span.searchResultPrices, 
+.groupedSearchResultElementLink .searchResultLinkGroupPrimary span.groupedNumberOfAdverts, 
+.groupedSearchResultElementLink .searchResultLinkGroupPrimary .searchResultEl11, 
+.investmentSearchResultList.ui-listview .investmentSearchResultElement .investmentResultsBasicInfo span, 
+.investmentSearchResultList.ui-listview .investmentSearchResultElement .investmentResultsAdditionalInfo span, 
+.investmentSearchResultList.ui-listview .investmentSearchResultElement .investmentResultsAdditionalInfo span.boldSpan {display : block;}
+
+.searchResultElementLink .searchResultLinkGroup .searchResultCityDistrict, 
+.searchResultElementLink .searchResultLinkGroup .searchResultEl1, 
+.groupedSearchResultElementLink .searchResultLinkGroupPrimary .searchResultEl8, 
+.investmentSearchResultList.ui-listview .investmentSearchResultElement .investmentResultsAdditionalInfo span, 
+.investmentSearchResultList.ui-listview .investmentSearchResultElement .investmentResultsBasicInfo span.investmentTabelarElement span.fullDecimalNumber, 
+.investmentSearchResultList.ui-listview .investmentSearchResultElement .investmentResultsBasicInfo span.investmentTabelarElement span.fullDecimalNumber span.decimalNumber {display : inline;}
+
+.groupedSearchResultElementLink .searchResultLinkGroupPrimary span.groupedNumberOfAdverts, 
+.groupedSearchResultElementLink .searchResultLinkGroupPrimary .searchResultEl11 {font-weight : bold;}
+.groupedSearchResultElementLink .searchResultLinkGroupPrimary span.groupedNumberOfAdverts {color : #CC0000;}
+.searchResultElement div.ui-btn-text a.searchResultElementLink span.searchResultPrices {font-weight : bold;}
+.searchResultElement div.ui-btn-text a.searchResultElementLink span.searchResultDate, 
+.groupedSearchResultElementLink span.searchResultDate, 
+.investmentSearchResultList.ui-listview .investmentSearchResultElement .investmentResultsAdditionalInfo span.searchResultDateClass {/*float : right;font : 10px Arial;position : relative;right : 20px;top : 60px;*/
+display : block;top : 3px;font : .80em Arial;position : relative;left : 0px;}
+.searchResultElement div.ui-btn-inner span.ui-icon, 
+.searchResultHeader .searchResultHeaderElement div.ui-btn-inner span.ui-icon, 
+.groupedSearchResultList.ui-listview .groupedSearchResultElement div.ui-btn-inner span.ui-icon, 
+.investmentSearchResultList.ui-listview .investmentSearchResultElement div.ui-btn-inner span.ui-icon {display : none;}
+.searchResultNextPreviousButton, .investmentPagination {display : table;margin : 25px 0px 0px 0px;width : 100%;}
+.searchResultNextPreviousButton .nextResult, .searchResultNextPreviousButton .previousResult {display : table-cell;float : right;}
+.searchResultNextPreviousButton .previousResult {float : left;width : 50%;}
+.searchResultNextPreviousButton .nextResult a.ui-btn-up-c, .searchResultNextPreviousButton .nextResult a.ui-btn-down-c, 
+.searchResultNextPreviousButton .previousResult a.ui-btn-up-c, .searchResultNextPreviousButton .previousResult a.ui-btn-down-c, 
+.investmentPagination .investmentNextResult a.ui-btn-up-c, .investmentPagination .investmentNextResult a.ui-btn-down-c, 
+.investmentPagination .investmentPreviousResult a.ui-btn-up-c, .investmentPagination .investmentPreviousResult a.ui-btn-down-c, 
+.searchResultNextPreviousButton .nextResult a.ui-btn-hover-c, .searchResultNextPreviousButton .previousResult a.ui-btn-hover-c, 
+.investmentPagination .investmentNextResult a.ui-btn-hover-c, .investmentPagination .investmentPreviousResult a.ui-btn-hover-c {background : #333;border : 0px;border-radius : 5px;box-shadow : none;color : #FFF;text-shadow : none;width : 85px;}
+.searchResultNextPreviousButton .nextResult a.ui-btn-hover-c, .searchResultNextPreviousButton .previousResult a.ui-btn-hover-c, 
+.investmentPagination .investmentNextResult a.ui-btn-hover-c, .investmentPagination .investmentPreviousResult a.ui-btn-hover-c {background : #000;}
+.searchResultNextPreviousButton .nextResult a, 
+.investmentPagination .investmentNextResult a {float : right;}
+.searchResultNextPreviousButton .previousResult a, 
+.investmentPagination .investmentPreviousResult a {float : left;}
+.searchResultNextPreviousButton .nextResult a span, .searchResultNextPreviousButton .previousResult a span, 
+.investmentPagination .investmentNextResult a span, .investmentPagination .investmentPreviousResult a span {border-radius : 0px;font : 14px Arial;padding : 5px 3px;}
+div.investmentName {margin : 0px 0px 10px 0px;}
+div.investmentDetailsAdditionalDescription {margin : 10px 0px;}
+.investmentSearchResultList.ui-listview .investmentSearchResultElement span.investmentImageSpan, 
+.investmentSearchResultList.ui-listview .investmentSearchResultElement span.investmentResultsBasicInfo {display : inline-block;float : left;}
+.investmentSearchResultList.ui-listview .investmentSearchResultElement span.investmentResultsAdditionalInfo {display : inline-block;float : right;margin: 0px 30px 0px 0px;text-align : left;}
+.investmentSearchResultList.ui-listview .investmentSearchResultElement span.investmentResultsAdditionalInfo span.boldSpan {font-weight : bold;}
+
+.marketSegment .GlossaryAsRadioLabelClass .ui-btn-text, .ui-checkbox .ui-btn-text {font-weight : normal;margin : 0px 0px 0px 5px;}
+
+/*detaild*/
+.ui-content .detailsHeader, .ui-content .detailsPricePerMeter, .ui-content .detailsPhoneEmail .detailsEmail #emailHiddenId div, .ui-content .detailsPhoneEmail div#emailHiddenId {display : block;}
+.ui-content .detailsPricePerMeter {margin : 5px 0px;}
+.ui-content .detailsPhoneEmail .detailsPhone {margin : 0px 0px 0px -5px;}
+.ui-content .detailsPhoneEmail .detailsEmail {margin : 0px -10px 0px 0px;}
+.ui-content .detailsHeader, div.investmentName span {font : bold 17px Arial;}
+.ui-content .detailsPictureRegion {border-bottom : 1px solid #E2E2E2;border-top : 1px solid #E2E2E2;margin : 0px -15px;padding : 0px 15px;}
+.ui-content .detailsPictureRegion .detailsPicture {padding : 10px 0px 0px;text-align : center;}
+.ui-content .detailsPictureRegion .detailsPictureLinks {padding : 0px 0px 10px;}
+.ui-content .detailsPictureRegion img {/*height : 225px;width : 290px;*/} /* STYL DO WYWALENIA, PERMANENTNE USTAWIENIE WIELKOŒCI OBRAZKOWI, CEL: POGL¥DOWO */
+.ui-content .detailsPictureRegion .detailsPictureLinks, .ui-content .detailsPhoneEmail, .ui-content .ivestmnetDetailsPhoneEmail, .ui-content .EmailContent #emailHiddenId .sendEmailDiv {display : table;width : 100%;}
+.ui-content .detailsPhoneEmail, .ui-content .ivestmnetDetailsPhoneEmail {margin : 20px 0px;}
+.ui-content .detailsPhoneEmail .detailsEmail, 
+.ui-content .ivestmnetDetailsPhoneEmail .investmentDetailsEmail {text-align : right;width : 132px;}
+.ui-content .detailsPictureRegion .detailsPictureLinks div, .ui-content .detailsPhoneEmail div, .ui-content .ivestmnetDetailsPhoneEmail div, 
+.ui-content .EmailContent #emailHiddenId .sendEmailDiv div.ui-btn {display : table-cell;}
+.ui-content .detailsPictureRegion .detailsPictureLinks div.showOnMap, .ui-content .detailsPhoneEmail div.detailsEmail di.#emailShowedId, .ui-content .ivestmnetDetailsPhoneEmail div.investmentDetailsEmail {text-align : right;}
+.ui-content .detailsPhoneEmail div a, .ui-content .investmentDetailsPhone a, .ui-content .investmentDetailsEmail a, 
+.ui-content .EmailContent .sendEmailDiv .ui-btn .ui-btn-inner, .ui-content .EmailContent #emailHiddenId .sendEmailDiv a, 
+.ui-content .EmailContentInvestment .sendEmailDiv .ui-btn .ui-btn-inner, .ui-content .EmailContentInvestment #emailHiddenId .sendEmailDiv a {background : #FF6600;border : 0px;border-radius : 3px;box-shadow : none;color : #FFF;display : inline-block;font : normal 14px Arial;text-shadow : none;width : 132px;}
+.ui-content .EmailContent .sendEmailDiv .ui-btn-up-c, .ui-content .EmailContent .sendEmailDiv .ui-btn-hover-c {text-align : left;}
+.ui-content .EmailContent .sendEmailDiv .ui-btn.ui-btn-up-c .ui-btn-inner, .ui-content .EmailContent .sendEmailDiv .ui-btn.ui-btn-hover-c .ui-btn-inner {margin : 0.5em 5px;}
+.ui-content .EmailContent .sendEmailDiv .ui-btn.ui-btn-hover-c {border : 0px;box-shadow : none;}
+.ui-content .detailsPhoneEmail div a span.ui-btn-inner, .ui-content .ivestmnetDetailsPhoneEmail div a span.ui-btn-inner {border : 0px;padding : 10px;}
+.ui-content .detailsPhoneEmail div a span.ui-icon, .ui-content .ivestmnetDetailsPhoneEmail div a span.ui-icon, 
+.investmentSearchResultList.ui-listview .investmentSearchResultElement a.ui-li-link-alt {display : none;}
+.ui-content .detailsPhoneEmail .detailsEmail #emailHiddenId {margin : 10px 0px;}
+.ui-content .EmailContent div#emailHiddenId .emailTitle input, .ui-content .EmailContent div#emailHiddenId .emailText textarea, 
+.ui-content .EmailContentInvestment div#emailHiddenId .emailTitle input, .ui-content .EmailContentInvestment div#emailHiddenId .emailText textarea {background : #FFF;border-radius : 0px; box-shadow : none;}
+.ui-content .EmailContent #emailHiddenId .sendEmailDiv {margin : 0px 0px 20px 0px;}
+.ui-content .EmailContent #emailHiddenId .sendEmailDiv a, 
+.ui-content .EmailContentInvestment #emailHiddenId .sendEmailDiv a {cursor : pointer;display : inline-block;margin : 0.5em 0px;padding : 10px 0px;text-align : center;}
+.ui-content .EmailContent #emailHiddenId .sendEmailDiv a.emailSubmitClass.ui-link /*, 
+.ui-content .EmailContentInvestment #emailHiddenId .sendEmailDiv a.emailSubmitClass.ui-link */ {float : left;}
+.ui-content .EmailContent #emailHiddenId .sendEmailDiv a.cancelButtonEmailClass.ui-link, 
+.ui-content .EmailContentInvestment #emailHiddenId .sendEmailDiv a.cancelButtonEmailClass.ui-link {background : none;color : #003366;float : right;}
+.ui-content .EmailContent #emailHiddenId .sendEmailDiv .ui-btn {background : none;}
+.ui-content .EmailContent #emailHiddenId .sendEmailDiv .ui-btn button {line-height : 0;height : 0px;position : relative;font-size : 0px;}
+div.detailsBasicInfoContainer {
+	background: 			#FFF /*{c-bhover-background-color}*/;
+	background-image: -webkit-gradient(linear, left top, left bottom, from( #FFF /*{c-bhover-background-start}*/), to( #EFEFEF /*{c-bhover-background-end}*/)); /* Saf4+, Chrome */
+	background-image: -webkit-linear-gradient(#FFF /*{c-bhover-background-start}*/, #EFEFEF /*{c-bhover-background-end}*/); /* Chrome 10+, Saf5.1+ */
+	background-image:    -moz-linear-gradient(#FFF /*{c-bhover-background-start}*/, #EFEFEF /*{c-bhover-background-end}*/); /* FF3.6 */
+	background-image:     -ms-linear-gradient(#FFF /*{c-bhover-background-start}*/, #EFEFEF /*{c-bhover-background-end}*/); /* IE10 */
+	background-image:      -o-linear-gradient(#FFF /*{c-bhover-background-start}*/, #EFEFEF /*{c-bhover-background-end}*/); /* Opera 11.10+ */
+	background-image:         linear-gradient(#FFF /*{c-bhover-background-start}*/, #EFEFEF /*{c-bhover-background-end}*/);
+	margin : 0px -15px;
+	padding : 0px 15px 5px;
+}
+
+div.detailsDescriptions {
+	background: 			#FFF /*{c-bhover-background-color}*/;
+	background-image: -webkit-gradient(linear, left top, left bottom, from( #EFEFEF /*{c-bhover-background-start}*/), to( #FFF /*{c-bhover-background-end}*/)); /* Saf4+, Chrome */
+	background-image: -webkit-linear-gradient(#EFEFEF /*{c-bhover-background-start}*/, #FFF /*{c-bhover-background-end}*/); /* Chrome 10+, Saf5.1+ */
+	background-image:    -moz-linear-gradient(#EFEFEF /*{c-bhover-background-start}*/, #FFF /*{c-bhover-background-end}*/); /* FF3.6 */
+	background-image:     -ms-linear-gradient(#EFEFEF /*{c-bhover-background-start}*/, #FFF /*{c-bhover-background-end}*/); /* IE10 */
+	background-image:      -o-linear-gradient(#EFEFEF /*{c-bhover-background-start}*/, #FFF /*{c-bhover-background-end}*/); /* Opera 11.10+ */
+	background-image:         linear-gradient(#EFEFEF /*{c-bhover-background-start}*/, #FFF /*{c-bhover-background-end}*/);
+	margin : -1px -15px 0px;
+	padding : 5px 15px 0px;
+}
+
+.mainBody .categoryListElement.ui-btn-up-c {
+	border: 0px;
+	font-weight: bold;
+	color: 					#444 /*{c-bup-color}*/;
+	text-shadow: none;
+	background: #eee url(/Content/images/linear_bg_2.png);
+	background-image: -webkit-gradient(linear, left top, left bottom, from( #fdfdfd /*{c-bup-background-start}*/), to( #eee /*{c-bup-background-end}*/)); /* Saf4+, Chrome */
+	background-image: -webkit-linear-gradient(#fdfdfd /*{c-bup-background-start}*/, #eee /*{c-bup-background-end}*/); /* Chrome 10+, Saf5.1+ */
+	background-image:    -moz-linear-gradient(#fdfdfd /*{c-bup-background-start}*/, #eee /*{c-bup-background-end}*/); /* FF3.6 */
+	background-image:     -ms-linear-gradient(#fdfdfd /*{c-bup-background-start}*/, #eee /*{c-bup-background-end}*/); /* IE10 */
+	background-image:      -o-linear-gradient(#fdfdfd /*{c-bup-background-start}*/, #eee /*{c-bup-background-end}*/); /* Opera 11.10+ */
+	background-image:         linear-gradient(#fdfdfd /*{c-bup-background-start}*/, #eee /*{c-bup-background-end}*/);
+}
+
+label { font-size: 16px; }
+
+.ui-content .EmailContent .emailTitle, .ui-content .EmailContentInvestment .emailTitle {margin : 0px 0px 10px 0px;}
+.ui-content .investmentDetailsSummary {display: block;margin: 10px 0px 20px;}
+.ui-content .investmentDetailsSummary div {display: inline;}
+
+.searchTitle, .searchTitle div {
+    display: inline-block;
+    font-size: 16px;
+    margin: 0 0 5px;
+}
+
+.galleryMainBody, .ui-mobile .galleryMainBody .ui-page-active {background: #000 !important;}
+.galleryMainBody .ui-page .ui-footer {background: #000;border : none;}
+.galleryMainBody .ui-page .ui-header {position: relative;
+	background: #000000;
+	background-image: linear-gradient(top, #262626 15%, #000000 100%);
+	background-image: -o-linear-gradient(top, #262626 15%, #000000 100%);
+	background-image: -moz-linear-gradient(top, #262626 15%, #000000 100%);
+	background-image: -webkit-linear-gradient(top, #262626 15%, #000000 100%);
+	background-image: -ms-linear-gradient(top, #262626 15%, #000000 100%);
+	background-image: -webkit-gradient(
+		linear,
+		left top,
+		left bottom,
+		color-stop(0.15, #262626),
+		color-stop(1, #000000)
+	);
+	border : none;
+	border-bottom : 1px solid #666;
+	margin : 0px;
+	padding : 0px;
+}
+
+.ui-page .ui-header .galleryReturnToAdvert, .ui-page .ui-header .nextPreviousPicture, 
+.mainBody .ui-content .pictureBackground .picture {
+	display : table-cell;
+}
+
+.ui-page .ui-header .nextPreviousPicture {
+	text-align : right;
+}
+
+.ui-page .ui-header .nextPreviousPicture .previousPicture, .ui-page .ui-header .nextPreviousPicture .nextPicture {
+	display : inline-block;
+}
+
+.ui-page .ui-header .galleryReturnToAdvert a, .ui-page .ui-header .nextPreviousPicture a {
+	border-radius : 0px;
+	border : 0px;
+	box-shadow : none;
+	text-shadow : none;
+}
+
+.ui-page .ui-header .nextPreviousPicture a {
+	margin : 0px 15px;
+}
+
+.ui-page .ui-header .galleryReturnToAdvert a, .ui-page .ui-header .galleryReturnToAdvert a:Hover, 
+.ui-page .ui-header .nextPreviousPicture .previousPicture a, .ui-page .ui-header .nextPreviousPicture .previousPicture a:Hover, 
+.ui-page .ui-header .nextPreviousPicture .nextPicture a, .ui-page .ui-header .nextPreviousPicture .nextPicture a:Hover {
+	background : url(/Content/images/gallery-icons.png) no-repeat;
+	background-position : -12px -56px;
+	border-radius : 0px 0px 0px 0px;
+	border : none;
+	bottom : 0px;
+	box-shadow : none;
+	display : inline-block;
+	font-size : 0px;
+	height : 20px;
+	line-height : 0px;
+	margin: 20px;
+	position : relative;
+	text-decoration : none;
+	text-shadow : none;
+	width : 20px;
+	z-index : 999;
+}
+
+.ui-page .ui-header .galleryReturnToAdvert a:Hover {
+	background-position : -12px -12px;
+}
+
+.ui-page .ui-header .nextPreviousPicture .previousPicture a {
+	background-position : -56px -56px;
+}
+
+.ui-page .ui-header .nextPreviousPicture .previousPicture a:Hover {
+	background-position : -56px -12px;
+}
+
+.ui-page .ui-header .nextPreviousPicture .nextPicture a {
+	background-position : -144px -56px;
+}
+
+.ui-page .ui-header .nextPreviousPicture .nextPicture a:Hover {
+	background-position : -144px -12px;
+}
+
+.mainBody .ui-content .pictureBackground {
+	background : #000;
+	display : table;
+	margin: 0px;
+	width : 100%;
+}
+
+.mainBody .ui-content .pictureBackground .picture {
+	padding : 0px;
+	text-align : center;
+	vertical-align : middle;
+} 
+.message-container.ui-collapsible .ui-collapsible-content {border-top : 1px solid #F7C942;}
+.message-container.ui-collapsible .ui-collapsible-content.ui-corner-bottom {border-radius : 0.6em 0.6em 0.6em 0.6em;}
+.ui-radio .GlossaryAsRadioLabelClass .ui-btn-inner, .ui-controlgroup-controls .ui-checkbox .ui-btn-inner {background : #FFF;}

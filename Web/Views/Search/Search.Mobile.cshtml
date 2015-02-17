@@ -1,0 +1,36 @@
+﻿@using Trader.Web.Models.Search
+@using Trader.Model.Glossaries.Providers
+
+@model SearchViewModel
+@{
+    var category = CategoryProvider.Categories.SingleOrDefault(x => x.Id == Model.CategoryId);
+    var categoryName = string.Empty;
+    if (category != null)
+    {
+        categoryName = category.Name;
+    }
+    ViewBag.Title = string.Format("Znajdź {0} | Domiporta.pl", categoryName);
+    Layout = "~/Views/Shared/_Layout.Mobile.cshtml";
+}
+
+@section HeaderAdvertisement{
+    @Html.Partial(MVC.Shared.Views.AdServer.AdServerColumnTop)    
+}
+
+@section HeaderSection {
+    @Html.Partial(MVC.Shared.Views.Header_Mobile)
+}
+
+@section FooterSection{
+    @Html.Partial(MVC.Shared.Views.AdServer.AdServerColumnBottom)
+    @Html.Partial(MVC.Shared.Views.Footer_Mobile)
+}
+
+@Html.Partial(MVC.Shared.Views.Quartic.QuarticSearchParams)
+
+@* using mvc helper with a view does not work here*@
+@if (Model.CategoryId == default(int)) { Response.Redirect(Url.Action("Index", "Home")); }
+
+@Html.EditorForModel("SearchCriteria")
+
+@Html.Partial(MVC.Shared.Views.Quartic.QuarticForSearch)

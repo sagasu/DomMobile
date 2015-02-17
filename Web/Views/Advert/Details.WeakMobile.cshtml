@@ -1,0 +1,197 @@
+﻿@using Trader.Web.Models.Advert
+@using Trader.Common
+@using Trader.Web.Global
+@using Trader.Web.Helpers
+@using Trader.Model.Glossaries.Providers
+@using Trader.Web.Extensions
+
+@model AdvertViewModel
+
+@{
+    ViewBag.Title = Model.Subject;
+    Layout = "~/Views/Shared/_Layout.WeakMobile.cshtml";
+}
+
+@section HeaderSection {
+    <div class="headerWithMagnifierAndList">
+        @Html.Partial(MVC.Shared.Views.Header_Mobile)
+        <div class="returnToResultsClass"><a data-role="button" data-ajax="false" href='@Url.Url(MVC.Search.SearchResult(),Model.SearchViewModel.ShallowCloneWoSearchResults())'><img src="@Url.Content("~/Content/images/ikonka-lista.png")" alt="")"></a></div>
+        <div class="magnifier"><a data-role="button" data-ajax="false" href='@Url.Url(MVC.Search.Search(),Model.SearchViewModel.ShallowCloneWoSearchResults())'><img src="@Url.Content("~/Content/images/ikonka-lupka.png")" alt="")"></a></div>
+    </div>
+}
+
+@{
+    var transactionType = TransactionTypeProvider.TransactionTypes.SingleOrDefault(x => x.Id == Model.SearchViewModel.TransactionTypeId);
+
+    var viewModelMetadata = ModelMetadataProviders.Current.GetMetadataForProperties(Model, typeof(AdvertViewModel)).ToList();
+
+    var numberOfRoomsMetadata = viewModelMetadata.SingleOrDefault(x => x.PropertyName == StaticReflectionPoco.AdvertViewModel.NumberOfRooms);
+    var landSurfaceMetadata = viewModelMetadata.SingleOrDefault(x => x.PropertyName == StaticReflectionPoco.AdvertViewModel.LandSurface);
+    var landTypeMetadata = viewModelMetadata.SingleOrDefault(x => x.PropertyName == StaticReflectionPoco.AdvertViewModel.LandType);
+    var comercialTypeMetadata = viewModelMetadata.SingleOrDefault(x => x.PropertyName == StaticReflectionPoco.AdvertViewModel.ComercialType);
+    var numberOfFloorsMetadata = viewModelMetadata.SingleOrDefault(x => x.PropertyName == StaticReflectionPoco.AdvertViewModel.NumberOfFloors);
+    var floorNumberMetadata = viewModelMetadata.SingleOrDefault(x => x.PropertyName == StaticReflectionPoco.AdvertViewModel.FloorNumber);
+    var creationYearMetadata = viewModelMetadata.SingleOrDefault(x => x.PropertyName == StaticReflectionPoco.AdvertViewModel.CreationYear);
+    var materialMetadata = viewModelMetadata.SingleOrDefault(x => x.PropertyName == StaticReflectionPoco.AdvertViewModel.Material);
+    var buildingCategoryMetadata = viewModelMetadata.SingleOrDefault(x => x.PropertyName == StaticReflectionPoco.AdvertViewModel.BuildingCategory);
+}
+
+@Html.Partial(MVC.Shared.Views.Quartic.QuarticDetails, Model.Id)
+
+<div class="detailsBasicInfoContainer">
+
+    <span class="detailsHeader">
+        @Html.DisplayFor(x => x.Subject),
+        @if (Model.Price != null && Model.Price.Amount != 0 && !(Model.DontShowPrice.HasValue && Model.DontShowPrice.Value))
+        {
+            @Html.DisplayFor(x => x.Price.Amount) @Html.DisplayFor(x => x.Price.Currency)
+        }
+    </span>
+    <span class="detailsPricePerMeter">
+        @if (Model.PricePerMeter != null && (Model.PricePerMeter.Amount != 0) && !(Model.DontShowPrice.HasValue && Model.DontShowPrice.Value))
+        {
+            @(Html.DisplayFor(x => x.PricePerMeter.Amount, MVC.Shared.Views.DisplayTemplates.Decimal)) 
+            @:/
+            @(Html.DisplayFor(x => x.PricePerMeter.Currency)) @:m<sup>2</sup>
+        }
+    </span>
+
+    <span class="detailsBasicInformation"></span>
+    <span class="detailsBasicInfo">
+        @(transactionType == null ? string.Empty : (Model.CategoryId == CategoryProvider.LandId ? transactionType.AlternativeName : transactionType.Name) + ",")
+        @if (Model.NumberOfRooms.HasValue && numberOfRoomsMetadata.ShowForDisplay)
+        {
+            if (Model.NumberOfRooms > 0)
+            {
+                @: pokoje: @(Model.NumberOfRooms.Value),
+            }
+        }
+        @if (Model.FloorNumber.HasValue && floorNumberMetadata.ShowForDisplay)
+        {
+            if (Model.FloorNumber.Value == 0)
+            {
+                @:parter,
+            }
+            else
+            {
+                @: piętro: @(Model.FloorNumber.Value),
+            }
+        }
+        @if ((!string.IsNullOrEmpty(Model.BuildingCategory)) && buildingCategoryMetadata.ShowForDisplay)
+        {
+            @(Model.BuildingCategory)@:,
+        }
+        @if ((!string.IsNullOrEmpty(Model.ComercialType)) && comercialTypeMetadata.ShowForDisplay)
+        {
+            @(Model.ComercialType)@:,
+        }
+        @if ((!string.IsNullOrEmpty(Model.Material)) && materialMetadata.ShowForDisplay)
+        {
+            @(Model.Material)@:,
+        }
+        @if (Model.NumberOfFloors.HasValue && numberOfFloorsMetadata.ShowForDisplay)
+        {
+            if (Model.NumberOfFloors.Value == 0)
+            {
+                @:parterowy,
+            }
+            else
+            {
+                @:liczba pięter: @(Model.NumberOfFloors.Value),
+            }
+        }
+        @if (Model.CreationYear.HasValue && creationYearMetadata.ShowForDisplay)
+        {
+            @(Model.CreationYear.Value)@: r.
+        }
+        @if (Model.LandSurface.HasValue && landSurfaceMetadata.ShowForDisplay)
+        {
+            @:powierzchnia działki: @(Html.DisplayFor(x => Model.LandSurface.Value, MVC.Shared.Views.DisplayTemplates.Decimal)) m<sup>2</sup>
+        }
+    </span>
+</div>
+
+<div class="detailsPictureRegion">
+    @if (Model.Pictures != null && Model.Pictures.Any())
+    {
+        <div class="detailsPicture">
+            <img onclick="javascript:location.href='@Url.Url(MVC.Advert.Gallery(), Model.BuildSmallVersion())'" src="@Model.Pictures.FirstOrDefault()" alt="" />
+        </div>
+        <div class="detailsPictureLinks">
+            <div class="detailsMorePictures">
+                <a data-ajax="false" href='@Url.Url(MVC.Advert.Gallery(), Model.BuildSmallVersion())'>Zobacz @Model.Pictures.Count zdjęć</a>
+            </div>
+@*            <div class="showOnMap"><a href="#">Pokaż na mapie</a></div>*@
+        </div>
+    }
+</div>
+
+<div class="detailsDescriptions">
+    <div class="detailsShortDescription"  >
+        @Html.DisplayFor(x => x.ShortDescription)
+        <a id="@Consts.JavascriptIds.AdvertShortDescriptionId" class="detailsDescriptionMore" href='javascript:trader.expandDescription();'>Więcej</a>
+    </div>
+    <div class="detailsDescription" id="@Consts.JavascriptIds.AdvertDescriptionId" style="display: none;">
+        @Html.DisplayFor(x => x.Description)
+        <a class="detailsDescriptionLess" href='javascript:trader.expandShortDescription();'>Zwiń</a>
+    </div>
+</div>
+
+<div class="emailMessage">
+    <div id="@Consts.JavascriptIds.EmailMessageId"></div>
+</div>
+
+<div class="detailsPhoneEmail">
+    <div class="detailsPhone">@Html.DisplayFor(x => x.UserViewModel.Phone)</div>
+
+    <div class="detailsEmail">
+        @if (Model.UserViewModel.Email.IsDestinationEmailValid)
+        {
+            <div Id="@Consts.JavascriptIds.EmailShowedId">
+                <a href="javascript:trader.expandEmailForm();" data-role="button" data-icon="grid">Wyślij email</a>
+            </div>
+        }
+    </div>
+</div>
+
+@if (Model.UserViewModel.Email.IsDestinationEmailValid)
+{
+    <div class="EmailContent">@Html.DisplayFor(x => x.UserViewModel.Email)</div>
+}
+
+<script type="text/javascript">
+    trader.expandDescription = function () {
+        $("#@Consts.JavascriptIds.AdvertShortDescriptionId").slideUp();
+        $("#@Consts.JavascriptIds.AdvertDescriptionId").slideDown();
+    }
+
+    trader.expandShortDescription = function () {
+        $("#@Consts.JavascriptIds.AdvertShortDescriptionId").slideDown();
+        $("#@Consts.JavascriptIds.AdvertDescriptionId").slideUp();
+    }
+
+    $(function () {
+        $("#@Consts.JavascriptIds.AdvertDescriptionId").slideUp();
+    });
+</script>
+
+@if (Model.IsInvestment)
+{
+    if (Model.InvestmentViewModel != null)
+    {
+        @Html.Partial(MVC.Advert.Views.InvestmentList_Mobile, Model.InvestmentViewModel)
+    }
+}
+else
+{
+    if (Model.DetailsSearchViewModel != null)
+    {
+        @Html.Partial(MVC.Shared.Views.GroupedSearchResultList_Mobile, Model.DetailsSearchViewModel)
+    }
+}
+
+@Html.Partial(MVC.Shared.Views.Quartic.QuarticProtocol)
+
+@section FooterSection {
+    @Html.Partial(MVC.Shared.Views.Footer_Mobile)
+}

@@ -1,0 +1,54 @@
+﻿@using Trader.Web.Models.Search
+@using Trader.Model.Glossaries.Providers
+@using Trader.Common
+@using Trader.Web.Helpers
+@using Trader.Web.Global
+
+@model SearchViewModel
+
+<div data-role="fieldcontain">
+    <fieldset data-role="controlgroup" data-type="horizontal" >
+        @{
+            var defaultTransactionTypeId = TransactionTypeProvider.SellId; // If not set in request, set this element
+            var transactionTypeId = Model.TransactionTypeId == null ? defaultTransactionTypeId : Model.TransactionTypeId;
+            var index = 1;
+        }
+        @foreach (var transactionType in TransactionTypeProvider.TransactionTypes.Where(x => x.ShowAsSearchCriteria == true))
+        { 
+            <input type="radio"
+                    name="@(StaticReflectionPoco.SearchViewModel.TransactionTypeId)"
+                    id="radio-choice-@index"
+                    value="@transactionType.Id" 
+                    @(transactionType.Id == transactionTypeId ? "checked='checked'" : string.Empty) />
+            
+            if (Model.CategoryId == CategoryProvider.LandId)
+            {
+                <label for="radio-choice-@index">@transactionType.AlternativeName</label>
+            }
+            else
+            {
+                <label for="radio-choice-@index">@transactionType.Name</label>
+            }
+            index += 1;
+        }
+    </fieldset>
+</div>
+
+@Html.Partial("SetSearchTitle", Model)
+
+<script type="text/javascript">
+    // initial render after page load
+    $(document).ready(function () {
+        $("input[name='@(StaticReflectionPoco.SearchViewModel.TransactionTypeId)']").bind("change", function () {
+            var selection = $(this).val();
+            $('#' + selection).attr('checked', true);
+
+            trader.setSearchTitle(selection);
+        })
+    });
+
+    $('#@Consts.JavascriptIds.MainBodyId').live('pagecreate', function (event) {
+        trader.setSearchTitle($("input:radio[name='@(StaticReflectionPoco.SearchViewModel.TransactionTypeId)']:checked").val());
+    });
+
+</script>

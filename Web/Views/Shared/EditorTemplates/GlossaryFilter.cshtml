@@ -1,0 +1,54 @@
+﻿@using Trader.Web.Models.Search
+@using Trader.Common
+@using Trader.Web.Global
+@using System.Text
+@using Trader.Web.Helpers
+@using Trader.Model.Glossaries.Providers
+
+@model GlossaryFilter<int>
+
+@{
+    var glossaryFilterName = string.Concat(ViewData.TemplateInfo.HtmlFieldPrefix, "_", ReflectionHelper.GetProperty<GlossaryFilter<int>>(x => x.SelectedValue).Name).Replace(".", "_");
+}
+
+@Html.TextBoxFor(x => x.SelectedValue, new { @class = "positive-integer textboxClass", @type = "tel"})
+
+@{
+    string sellFilters = string.Empty;
+    string rentFilters = string.Empty;
+    if (Model != null && Model.FilteredElements != null && Model.OptionalFilteredElements != null)
+    {
+        sellFilters = string.Join(",", Model.FilteredElements);
+        rentFilters = string.Join(",", Model.OptionalFilteredElements);
+    }
+}
+
+<script type="text/javascript">
+    $('#@Consts.JavascriptIds.MainBodyId').live('pagecreate', function (event) {
+        $('#@glossaryFilterName').autocomplete({
+            source: function (request, response) {
+                var sellData = [@(sellFilters)];
+                var rentData = [@(rentFilters)];
+                if($("input:radio[name='@(StaticReflectionPoco.SearchViewModel.TransactionTypeId)']:checked").val() === '@TransactionTypeProvider.SellId'){
+                    var filteredData = sellData.filter(function(index){
+                           return String(index).indexOf(request.term) === 0;
+                        });
+                }else{
+                    var filteredData = rentData.filter(function(index){
+                           return String(index).indexOf(request.term) === 0;
+                        });
+                }
+
+                response($.map(
+                    filteredData,
+                    function (item) {
+                        return {
+                            label: trader.formatNumber(item, '.', ' '),
+                            value: item
+                        }
+                    }));
+            },
+            minLength: 1
+        }).focus(trader.autoCompleteFixSet).blur(trader.autoCompleteFixUnset).removeAttr('autocomplete');
+    });
+</script>

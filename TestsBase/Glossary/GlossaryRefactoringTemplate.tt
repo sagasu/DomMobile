@@ -1,0 +1,43 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="System.Xml" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ output extension=".cs" #>
+
+<#
+			foreach (string name in this.GetNames())   
+			{
+		#>
+			 <#= name #>
+		<# 
+			}
+		#>
+		
+<#+
+        public IEnumerable<string> GetNames()
+        {
+			return Enumerable.Empty<string>();
+			
+/*            var doc = new XmlDocument();
+
+            // This is configuration for tests
+            // var absolutePath = Directory.GetCurrentDirectory().Replace("\\Services.Tests\\bin\\Debug", "\\Web\\Web.config");
+
+            // This is configuration for template
+            // string absolutePath = Host.ResolvePath("Glossary.txt");
+
+			string[] lines = System.IO.File.ReadAllLines("Glossary.txt");
+			
+			foreach(var line in lines.Where(x => x.contains(""))){
+				new District
+			}
+			
+            doc.Load(absolutePath);
+
+            return (from XmlNode node in doc.SelectNodes("/configuration/appSettings/add")
+                    select node.Attributes["key"].InnerText.Replace(":", string.Empty)).ToList();
+			*/
+        }
+#>

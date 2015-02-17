@@ -1,0 +1,91 @@
+﻿@using Trader.Web.Models.Advert
+@using Trader.Model.Glossaries.Providers
+@using Trader.Common
+
+@model InvestmentViewModel
+
+@if (Model.SearchResultViewModel.SearchResults != null && Model.SearchResultViewModel.SearchResults.Any())
+{
+    var innerPaginationBaseSearchOptions = Model.InvestmentSearchOptions.ShallowCloneWoMobileSearchCriteria();
+    
+    var category = CategoryProvider.Categories.SingleOrDefault(x => x.Id == Model.SearchViewModel.CategoryId);
+
+    <ul data-role="listview" class="investmentSearchResultList">
+        @foreach (var searchResultViewModel in Model.SearchResultViewModel.SearchResults)
+        {
+            innerPaginationBaseSearchOptions.PaginationStart++;
+            <li class="investmentSearchResultElement">
+                <a data-ajax="false"
+                   class="investmentSearchResultElementLink" 
+                   href="@Url.Action(MVC.Advert.Details())?@MvcGetParamsSerializer.Serialize(
+                               new AdvertViewModel { 
+                                   @Id = searchResultViewModel.Id,
+                                   IsInvestment = true, 
+                                   SearchViewModel = Model.SearchViewModel.ShallowCloneWoSearchResults(),
+                                   InnerSearchOptions = innerPaginationBaseSearchOptions,
+                                   InvestmentId = Model.Id
+                               })">
+                    <span class="investmentImageSpan">
+                        @if (string.IsNullOrEmpty(searchResultViewModel.Picture))
+                        {
+                            <span class="Font10px">brak zdjęcia</span>
+                        }
+                        else
+                        {
+                            <img src="@searchResultViewModel.Picture" alt="" class="investmentSearchResultElementPicture" />
+                        }
+                    </span>
+                    <span class="investmentResultsBasicInfo">
+                        <span class="investmentTabelarElement">
+                            @if (category != null) { 
+                                @(category.Name)
+                            }
+                        </span>
+                        <span class="investmentTabelarElement">
+                            @if (searchResultViewModel.FloorNumber.HasValue) { 
+                                if (searchResultViewModel.FloorNumber.Value == 0) { 
+                                    @:parter
+                                }
+                                else
+                                {
+                                    @:piętro: @(searchResultViewModel.FloorNumber.Value)
+                                }
+                            }
+                        </span>
+                        <span class="investmentTabelarElement">
+                            @if (searchResultViewModel.NumberOfRooms.HasValue && searchResultViewModel.NumberOfRooms.Value != 0)
+                            { 
+                                @:pokoje: @(searchResultViewModel.NumberOfRooms.Value)
+                            }
+                        </span>
+                        <span class="investmentTabelarElement">
+                            @if (searchResultViewModel.SurfaceArea.HasValue) { 
+                                @Html.DisplayFor(x => searchResultViewModel.SurfaceArea, MVC.Shared.Views.DisplayTemplates.Decimal) @:m<sup>2</sup>
+                            }
+                        </span>
+                    </span>
+                    <span class="investmentResultsAdditionalInfo">
+                        <span class="boldSpan">
+                            @if ((searchResultViewModel.Price != null) && (searchResultViewModel.Price.Amount != 0) && !(searchResultViewModel.DontShowPrice.HasValue && searchResultViewModel.DontShowPrice.Value))
+                            {
+                                @Html.DisplayFor(x => searchResultViewModel.Price.Amount, MVC.Shared.Views.DisplayTemplates.Decimal) @(searchResultViewModel.Price.Currency)
+                            }
+                            else
+                            {
+                                @:Cena zadzwoń
+                            }
+                        </span>
+                        <span class="investmentTabelarElement">
+                            @if ((searchResultViewModel.PricePerMeter != null) && searchResultViewModel.PricePerMeter.Amount != 0 && !(searchResultViewModel.DontShowPrice.HasValue && searchResultViewModel.DontShowPrice.Value))
+                            {
+                                @Html.DisplayFor(x => searchResultViewModel.PricePerMeter.Amount, MVC.Shared.Views.DisplayTemplates.Decimal) @(searchResultViewModel.PricePerMeter.Currency)@:/m<sup>2</sup>
+                            }
+                        </span>
+                        <span class="investmentTabelarEmptyElement"></span>
+                        <span class="dateInvestmentTabelarElement">@Html.DisplayFor(x => searchResultViewModel.CreationDate, MVC.Shared.Views.DisplayTemplates.CreationDate)</span>
+                    </span>
+                </a>
+            </li>
+        }
+    </ul>
+}

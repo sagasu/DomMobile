@@ -1,0 +1,190 @@
+﻿@using Trader.Web.Models.Search
+@using Trader.Common
+@using Trader.Web.Models.Advert
+@using Trader.Model.Solr
+@using Trader.Model.Glossaries.Providers
+@using Trader.Model
+@using Trader.Web.Helpers
+@using Trader.Web.Extensions
+
+@model SearchViewModel
+
+@if (Model != null && Model.GroupedSearchResults != null && Model.GroupedSearchResults.Matches > 0)
+{
+    var index = 0;
+    var innerPaginationBaseSearchOptions = Model.InnerPaginationSearchOptions ?? Model.SearchOptions.ShallowCloneWoMobileSearchCriteria();
+    innerPaginationBaseSearchOptions.PaginationNumerOfRows = SearchOptions.DetailsNumberOfRows;
+    var basePaginationStart = innerPaginationBaseSearchOptions.PaginationStart;
+
+    <ul data-role="listview" class="groupedSearchResultList">
+        @foreach (var groupedSearchResultViewModel in Model.GroupedSearchResults.Groups)
+        {
+            var vm = groupedSearchResultViewModel.Documents.First(); // It always has just one element
+            innerPaginationBaseSearchOptions.PaginationStart = basePaginationStart + ++index;
+
+            if (index == 6)
+            {
+                <li class="searchResultElement middleAdvertisement">
+                     @Html.Partial(MVC.Shared.Views.AdServer.AdServerColumnMiddle)
+                </li>
+            }
+            
+            if (string.IsNullOrEmpty(groupedSearchResultViewModel.InvestmentId))
+            {
+                // This is a secondary market.
+                var groupedViewModelMetadata = ModelMetadataProviders.Current.GetMetadataForProperties(vm, typeof(SearchResultViewModel)).ToList();
+
+                var pricePerMeterMetadata = groupedViewModelMetadata.SingleOrDefault(x => x.PropertyName == StaticReflectionPoco.SearchResultViewModel.PricePerMeter);
+                var numberOfRoomsMetadata = groupedViewModelMetadata.SingleOrDefault(x => x.PropertyName == StaticReflectionPoco.SearchResultViewModel.NumberOfRooms);
+                var landSurfaceMetadata = groupedViewModelMetadata.SingleOrDefault(x => x.PropertyName == StaticReflectionPoco.SearchResultViewModel.LandSurface);
+                var landTypeMetadata = groupedViewModelMetadata.SingleOrDefault(x => x.PropertyName == StaticReflectionPoco.SearchResultViewModel.LandType);
+                var comercialTypeMetadata = groupedViewModelMetadata.SingleOrDefault(x => x.PropertyName == StaticReflectionPoco.SearchResultViewModel.ComercialType);
+                var numberOfFloorsMetadata = groupedViewModelMetadata.SingleOrDefault(x => x.PropertyName == StaticReflectionPoco.SearchResultViewModel.NumberOfFloors);
+                var floorNumberMetadata = groupedViewModelMetadata.SingleOrDefault(x => x.PropertyName == StaticReflectionPoco.SearchResultViewModel.FloorNumber);
+
+                <li class="searchResultElement">
+                    <a class="searchResultElementLink" 
+                        data-ajax="false"
+                        href="@Url.Url(MVC.Advert.Details(),
+                                new AdvertViewModel { 
+                                    @Id = vm.Id,
+                                    SearchViewModel = Model.ShallowCloneWoSearchResults(),
+                                    InnerSearchOptions = innerPaginationBaseSearchOptions
+                                })">
+                        <span class="groupedImage">
+                            @if(string.IsNullOrEmpty(vm.Picture)){
+                                <span class="Font10px">brak zdjęcia</span>
+                            }else{
+                                <img src="@vm.Picture" alt="" class="searchResultElementPicture" />
+                            }
+                        </span>
+                        <span class="searchResultLinkGroup">
+                            <span class="searchResultEl1">@vm.Street </span>
+                            <span class="searchResultCityDistrict">
+                                <span class="searchResultEl2">@(string.IsNullOrEmpty(vm.District) ? string.Empty : vm.District + ",")</span>
+                                <span class="searchResultEl3">
+                                    @if (!vm.City.Equals(Model.City))
+                                    { @(vm.City) }
+                                </span>
+                            </span>
+                            <span class="searchResultPrices">
+                                <span class="searchResultEl4 strongClass">
+                                    @if (vm.Price != null && vm.Price.Amount != 0 && !(vm.DontShowPrice.HasValue && vm.DontShowPrice.Value))
+                                    {
+                                        @Html.DisplayFor(x => vm.Price.Amount) @vm.Price.Currency
+                                    }
+                                </span>
+                                <span class="searchResultEl5">
+                                    @if ((vm.PricePerMeter != null) && pricePerMeterMetadata.ShowForEdit && vm.PricePerMeter.Amount != 0 && !(vm.DontShowPrice.HasValue && vm.DontShowPrice.Value))
+                                    {
+                                        @:(@Html.DisplayFor(x => vm.PricePerMeter.Amount) @vm.PricePerMeter.Currency /m<sup>2</sup>)
+                                    }
+                                </span>
+                            </span>
+                            <span class="searchResultEl7">
+                                @if (vm.SurfaceArea.HasValue && vm.SurfaceArea.Value != 0)
+                                {
+                                    @: @Html.DisplayFor(x => vm.SurfaceArea)m<sup>2</sup>,
+                                }
+                            </span>
+                            <span class="searchResultEl6">
+                                @if (vm.NumberOfRooms.HasValue && numberOfRoomsMetadata.ShowForEdit)
+                                {
+                                    @:Pokoje: @vm.NumberOfRooms.Value,
+                                }
+                            </span>
+                            <span class="searchResultElNumberOfFloors">
+                                @if (vm.NumberOfFloors.HasValue && numberOfFloorsMetadata.ShowForEdit)
+                                {
+                                    if (vm.NumberOfFloors.Value == 0)
+                                    {
+                                        @:parterowy
+                                    }
+                                    else
+                                    {
+                                        @:liczba pięter: @vm.NumberOfFloors.Value,
+                                    }
+                                }
+                            </span>
+                            <span class="searchResultElFloorNumber">
+                                @if (vm.FloorNumber.HasValue && floorNumberMetadata.ShowForEdit)
+                                {
+                                    if (vm.FloorNumber.Value == 0)
+                                    {
+                                        @:parter,
+                                    }
+                                    else
+                                    {
+                                        @:piętro: @vm.FloorNumber.Value,
+                                    }
+                                }
+                            </span>
+                            <span class="searchResultElLandType">
+                                @if (landTypeMetadata.ShowForEdit)
+                                {
+                                    @vm.LandType
+                                }
+                            </span>
+                            <span class="searchResultElComercialType">
+                                @if (comercialTypeMetadata.ShowForEdit)
+                                {
+                                    @vm.ComercialType
+                                }
+                            </span>
+                            <span class="searchResultElLandSurface">
+                                @if (vm.LandSurface.HasValue && landSurfaceMetadata.ShowForEdit && vm.LandSurface.Value != 0)
+                                {
+                                    @:działka: @Html.DisplayFor(x => vm.LandSurface.Value) m<sup>2</sup>
+                                }
+                            </span>
+                            <span class="searchResultDate">@Html.DisplayFor(x => vm.CreationDate, MVC.Shared.Views.DisplayTemplates.CreationDate)</span>
+                        </span>
+                    </a>
+                </li>
+            }
+            else
+            {
+                // This is a primary market. 
+                <li class="groupedSearchResultElement">
+                    <a class="groupedSearchResultElementLink"
+                       data-ajax="false"
+                       href="@Url.Url(MVC.Advert.InvestmentDetails(),
+                                    new InvestmentViewModel
+                                    {
+                                        Id = @groupedSearchResultViewModel.InvestmentId,
+                                        SearchViewModel = Model.ShallowCloneWoSearchResults(),
+                                    })">
+                        <span class="groupedImagePrimary"><img src="@vm.InvestmentPicture" alt="" class="groupedSearchResultElementPicture" /></span>
+                            <span class="searchResultLinkGroupPrimary">
+                            <span class="searchResultEl8">
+                                @vm.Street
+                            </span>
+                            <span class="searchResultEl9">@(string.IsNullOrEmpty(vm.District) ? string.Empty : vm.District + ",") </span>
+                            <span class="searchResultEl10">@if (!vm.City.Equals(Model.City))
+                                                           { @(vm.City) }</span>
+
+                            <span class="searchResultEl11 strongClass">@groupedSearchResultViewModel.InvestmentName</span>
+                            <span class="groupedNumberOfAdverts">
+                                @if (Model.CategoryId == CategoryProvider.HouseId)
+                                {
+                                    @:domów:
+                                }
+                                else
+                                {
+                                    @:mieszkań:
+                                }
+                                @groupedSearchResultViewModel.NumFound 
+                            </span>
+                            <span class="searchResultDate">@Html.DisplayFor(x => vm.CreationDate, MVC.Shared.Views.DisplayTemplates.CreationDate)</span>
+                        </span>
+                        
+                    </a>
+                </li>
+            }
+        }
+    </ul>
+}
+else
+{ 
+    <p>Nie znaleziono wyników</p>
+}

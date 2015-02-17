@@ -1,0 +1,25 @@
+﻿@{
+    string GaAccount = "MO-914897-17";
+    string GaPixel = "ga.aspx";
+        
+    System.Text.StringBuilder url = new System.Text.StringBuilder();
+    url.Append(GaPixel + "?");
+    url.Append("utmac=").Append(GaAccount);
+    Random RandomClass = new Random();
+    url.Append("&utmn=").Append(RandomClass.Next(0x7fffffff));
+    string referer = "-";
+    if (Request.UrlReferrer != null
+        && "" != Request.UrlReferrer.ToString())
+    {
+        referer = Request.UrlReferrer.ToString();
+    }
+    url.Append("&utmr=").Append(HttpUtility.UrlEncode(referer));
+    if (HttpContext.Current.Request.Url != null)
+    {
+        url.Append("&utmp=").Append(HttpUtility.UrlEncode(Request.Url.PathAndQuery));
+    }
+    url.Append("&guid=ON");
+        
+    string googleAnalyticsImageUrl = url.ToString().Replace("&", "&amp;"); 
+}
+<img alt="" src="@(googleAnalyticsImageUrl)" />

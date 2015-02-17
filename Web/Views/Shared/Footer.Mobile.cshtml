@@ -1,0 +1,9 @@
+﻿@Html.Partial(MVC.Shared.Views.SetNotMobileCookie)
+
+<div>
+    @* Don't display 'return to full version' string for iphone - safari has a problem with a redirect. *@
+    @if((Request.UserAgent != null) && (!Request.UserAgent.ToLower().Contains("iphone"))){
+        <a data-ajax="false" href="@Html.Action("GetWebUrl", "Service")" onclick="javascript:trader.setCookie();" data-role="button">Pełna wersja serwisu w Domiporta.pl</a>
+    }
+</div>
+<div>Copyright © Trader.com (Polska)</div>

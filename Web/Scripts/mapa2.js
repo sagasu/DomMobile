@@ -1,0 +1,1 @@
+﻿var ghmxyalign = 'center'; var ghmxytype = 'absolute'; var ghmxy_identifier = new String("B82VTeN47cuBsZk32mamTMWnXhYZBS80wpxPFKMSTfr.b7"); document.write("<scrip"+"t type=\"text\/javascript\" src=\"http://mklik.gazeta.pl/hmapxy.js\"><\/script>");

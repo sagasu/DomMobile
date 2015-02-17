@@ -1,0 +1,121 @@
+﻿@using Trader.Web.Models.Advert
+@using Trader.Web.Global
+@using Trader.Common
+@using Trader.Model.Glossaries.Providers
+@using Trader.Web.Extensions
+
+@model InvestmentViewModel
+
+@{
+    ViewBag.Title = Model.Name;
+    Layout = "~/Views/Shared/_Layout.WeakMobile.cshtml";
+}
+
+@section HeaderSection {
+    <div class="headerWithMagnifierAndList">
+        @Html.Partial(MVC.Shared.Views.Header_Mobile)
+        <div class="returnToResultsClass"><a data-role="button" data-ajax="false" href='@Url.Url(MVC.Search.SearchResult(),Model.SearchViewModel)'><img src="@Url.Content("~/Content/images/ikonka-lista.png")" alt="" /></a></div>
+        <div class="magnifier"><a data-role="button" data-ajax="false" href='@Url.Url(MVC.Search.Search(),Model.SearchViewModel)'><img src="@Url.Content("~/Content/images/ikonka-lupka.png")" alt="" /></a></div>
+    </div>
+}
+
+@section FooterSection {
+    @Html.Partial(MVC.Shared.Views.Footer_Mobile)
+}
+
+<div class="investmentName">
+    <span>@Model.Name</span>
+</div>
+
+<div class= "invBasicInfo">
+    <div class="investmentDetailsBasicInfoStruct">
+        <span class="investmentBasicInfoStruct">Miasto:</span>
+        <span class="investmentDetailsBasicInfoElement">@Model.City</span>
+    </div>
+    <div class="investmentDetailsBasicInfoStruct">
+        <span class="investmentBasicInfoStruct">Dzielnica:</span>
+        <span class="investmentDetailsBasicInfoElement">@Model.District</span>
+    </div>
+
+    <div class="investmentDetailsBasicInfo">
+        <span class="investmentBasicInfoStruct">Ulica:</span>
+        <span class="investmentDetailsBasicInfoElement">@Model.Street</span>
+    </div>
+</div>
+
+<div class="investmentDetailsAdditionalDescription">
+    <div class="investmentDetailsShortDescription" id="@Consts.JavascriptIds.InvestmentShowedDetailsId" >
+        <a class="investmentDetailsShortDescriptionLink" href='javascript:trader.expandDescription();'>więcej informacji o inwestycji</a>
+    </div>
+
+    <div class="investmentDetailsDescription" id="@Consts.JavascriptIds.InvestmentHiddenDetailsId" style="display: none;">
+        <div class="invDetailsAdditionalInfo">
+            <span class="investmentDetailsAdditionalInfo">
+                <span class="investmentAdditionaInfoStruct">Termin realizacji:</span>
+                <span class="investmentAdditionaInfoElem">
+                    @if (Model.RealizationTime.HasValue)
+                    {
+                        @Html.DisplayFor(x => x.RealizationTime)
+                    }
+                </span>
+            </span>
+        </div>
+
+        <div class="investmentDetailsPhotoDiv">
+            @if (string.IsNullOrEmpty(Model.Picture))
+            {
+                <span class="Font10px">brak zdjęcia</span>
+            }
+            else
+            {
+                <img class="investmentDetailsPicture" src="@Model.Picture" onclick="javascript:location.href='@Url.Url(MVC.Advert.InvestmentGallery(), Model.BuildAdvertViewModel())'" alt="" />
+            }
+        </div>
+        <div class="ivestmnetDetailsPhoneEmail">
+            <div class="investmentDetailsPhone">@Html.DisplayFor(x => x.Phone)</div>
+
+            <div class="investmentDetailsEmail">
+                @if (Model.Email.IsDestinationEmailValid)
+                {
+                    <div id="@Consts.JavascriptIds.EmailShowedId">
+                        <a href="javascript:trader.expandEmailForm();" data-role="button" data-icon="grid">Wyślij email</a>
+                    </div>
+                }
+            </div>
+        </div>
+        @if (Model.Email.IsDestinationEmailValid)
+        {
+            <div class="EmailContentInvestment">@Html.DisplayFor(x => x.Email)</div>
+        }
+        <a class="investmentDetailsDescriptionLink" href='javascript:trader.expandShortDescription();'>zwiń</a>
+    </div>
+</div>
+
+<script type="text/javascript">
+    trader.expandDescription = function() {
+        $("#@Consts.JavascriptIds.InvestmentShowedDetailsId").hide();
+        $("#@Consts.JavascriptIds.InvestmentHiddenDetailsId").show();
+    };
+
+    trader.expandShortDescription = function() {
+        $("#@Consts.JavascriptIds.InvestmentShowedDetailsId").show();
+        $("#@Consts.JavascriptIds.InvestmentHiddenDetailsId").hide();
+    };
+
+    $(function () {
+        $("#@Consts.JavascriptIds.InvestmentHiddenDetailsId").hide();
+    });
+</script>
+
+@if (Model.SearchResultViewModel.SearchResults != null && Model.SearchResultViewModel.SearchResults.Any())
+{
+    var category = CategoryProvider.Categories.SingleOrDefault(x => x.Id == Model.SearchViewModel.CategoryId);
+     
+    <div class="investmentDetailsSummary">
+        Liczba @(category == null ? string.Empty : category.AlternateName)  w tej inwestycji: <div class="investmentDetailsAmmountOfAdverts">@Model.SearchResultViewModel.NumFound</div> 
+    </div>
+
+    @Html.Partial(MVC.Advert.Views.InvestmentList_Mobile, Model)
+
+    @Html.Partial(MVC.Advert.Views.InvestmentPagination, Model)
+}

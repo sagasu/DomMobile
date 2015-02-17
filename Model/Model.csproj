@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{B5360579-BA8C-44ED-B0DE-11AD9B472E3A}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Trader.Model</RootNamespace>
+    <AssemblyName>Model</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Web\_bin_deployableAssemblies\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.4.0.7\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web.Helpers, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Web\_bin_deployableAssemblies\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Web\_bin_deployableAssemblies\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Web\_bin_deployableAssemblies\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Web\_bin_deployableAssemblies\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Web\_bin_deployableAssemblies\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Web\_bin_deployableAssemblies\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="City.cs" />
+    <Compile Include="Common\CreateRule.cs" />
+    <Compile Include="Common\EmailViewModel.cs" />
+    <Compile Include="Common\IFluentDecorator.cs" />
+    <Compile Include="Common\Money.cs" />
+    <Compile Include="Glossaries\AbstractGlossary.cs" />
+    <Compile Include="Glossaries\ComercialType.cs" />
+    <Compile Include="Glossaries\Estate.cs" />
+    <Compile Include="Glossaries\IKeptInCodeGlossaryWSanitize.cs" />
+    <Compile Include="Glossaries\District.cs" />
+    <Compile Include="Glossaries\LandType.cs" />
+    <Compile Include="Glossaries\MarketSegment.cs" />
+    <Compile Include="Glossaries\Providers\ComercialTypeProvider.cs" />
+    <Compile Include="Glossaries\Providers\EstateProvider.cs" />
+    <Compile Include="Glossaries\Providers\DistrictProvider.cs" />
+    <Compile Include="Glossaries\Providers\LandTypeProvider.cs" />
+    <Compile Include="Glossaries\Providers\MarketSegmentProvider.cs" />
+    <Compile Include="Glossaries\TransactionType.cs" />
+    <Compile Include="Glossaries\Category.cs" />
+    <Compile Include="Glossaries\Community.cs" />
+    <Compile Include="Glossaries\Country.cs" />
+    <Compile Include="Glossaries\IKeptInCodeGlossary.cs" />
+    <Compile Include="Glossaries\ListElementsBuilder.cs" />
+    <Compile Include="Glossaries\MobileSearchCriteria.cs" />
+    <Compile Include="Glossaries\Poviat.cs" />
+    <Compile Include="Glossaries\Providers\TransactionTypeProvider.cs" />
+    <Compile Include="Glossaries\Providers\CategoryProvider.cs" />
+    <Compile Include="Glossaries\Providers\CommunityProvider.cs" />
+    <Compile Include="Glossaries\Providers\CountryProvider.cs" />
+    <Compile Include="Glossaries\Providers\IGlossaryProvider.cs" />
+    <Compile Include="Glossaries\Providers\MobileSearchCriteriaProvider.cs" />
+    <Compile Include="Glossaries\Providers\PoviatProvider.cs" />
+    <Compile Include="Glossaries\Providers\ProvinceProvider.cs" />
+    <Compile Include="Glossaries\Province.cs" />
+    <Compile Include="IAutoMapperModule.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SearchOptions.cs" />
+    <Compile Include="Solr\CorrectionHelper.cs" />
+    <Compile Include="Solr\KnownCities.cs" />
+    <Compile Include="Solr\DomiportaAdvertDetailsData.cs" />
+    <Compile Include="Solr\GroupedResultsModel.cs" />
+    <Compile Include="Solr\GroupModel.cs" />
+    <Compile Include="Solr\ISolrAdvert.cs" />
+    <Compile Include="Solr\ISimpleSolrAdvert.cs" />
+    <Compile Include="Solr\ISolrOrderByFields.cs" />
+    <Compile Include="Solr\AdvertOwnerType.cs" />
+    <Compile Include="Solr\MarketSegmentModel.cs" />
+    <Compile Include="Solr\SearchResultViewModel.cs" />
+    <Compile Include="Solr\SolrAdvertDto.cs" />
+    <Compile Include="Solr\SolrResultModel.cs" />
+    <Compile Include="Solr\SolrSearchCategoryAndParent.cs" />
+    <Compile Include="Solr\SolrSearchValueWithWildecard.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{05ED3A78-68A5-47A0-B410-ED039B6D94B1}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

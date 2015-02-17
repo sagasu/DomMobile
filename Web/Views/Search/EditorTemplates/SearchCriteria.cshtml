@@ -1,0 +1,163 @@
+﻿@using Trader.Web.Models.Search
+@using Trader.Model.Glossaries.Providers
+@using Trader.Common
+@using Trader.Web.Global
+@using Trader.Web.Helpers
+
+@model SearchViewModel
+
+<div class="searchTitle">@CategoryProvider.Categories.SingleOrDefault(x => x.Id == Model.CategoryId).Name 
+    <div id="@Consts.JavascriptIds.SearchTitleTransactionTypeId"></div>
+    <div class="changeCategory">
+    <a class="gotoHomePage" href="@Url.Action(MVC.Home.Index())">zmień</a>
+    </div>
+</div>
+
+<form method="post" action="@Url.Action(MVC.Search.SearchResult())" data-ajax = "false">
+    @{
+        var viewModelMetadata = ModelMetadataProviders.Current.GetMetadataForProperties(Model, typeof(SearchViewModel)).ToList();
+
+        var surfaceMetadata = viewModelMetadata.SingleOrDefault(x => x.PropertyName == StaticReflectionPoco.SearchViewModel.Surface);
+        var numberOfRoomsMetadata = viewModelMetadata.SingleOrDefault(x => x.PropertyName == StaticReflectionPoco.SearchViewModel.NumberOfRooms);
+        var marketSegmentMetadata = viewModelMetadata.SingleOrDefault(x => x.PropertyName == StaticReflectionPoco.SearchViewModel.MarketSegment);
+        var transactionTypeIdMetadata = viewModelMetadata.SingleOrDefault(x => x.PropertyName == StaticReflectionPoco.SearchViewModel.TransactionTypeId);
+        var provinceMetadata = viewModelMetadata.SingleOrDefault(x => x.PropertyName == StaticReflectionPoco.SearchViewModel.Province);
+        var landTypeMetadata = viewModelMetadata.SingleOrDefault(x => x.PropertyName == StaticReflectionPoco.SearchViewModel.LandType);
+        var comercialTypeMetadata = viewModelMetadata.SingleOrDefault(x => x.PropertyName == StaticReflectionPoco.SearchViewModel.ComercialType);
+        var isPrivatePersonMetadata = viewModelMetadata.SingleOrDefault(x => x.PropertyName == StaticReflectionPoco.SearchViewModel.IsPrivatePerson);
+    }
+
+    @if (transactionTypeIdMetadata.ShowForEdit)
+    {
+        @Html.Partial(MVC.Search.Views.TransactionTypeSearchCriteria, Model)
+    }
+    else
+    {
+        @Html.Partial("SetSearchTitle", Model)
+
+        <script type="text/javascript">
+            $('#@Consts.JavascriptIds.MainBodyId').live('pagecreate', function (event) {
+                trader.setSearchTitle('');
+            });
+        </script>
+    }
+
+    @Html.EditorFor(x => x.CategoryId)
+
+    @if (provinceMetadata.ShowForEdit)
+    {
+        <fieldset data-role="controlgroup" class="fieldsetclass">
+            <legend class="provinceLabel">@Html.LabelFor(x => x.Province)</legend>
+            <div class="provinceEdit">@Html.EditorFor(x => x.Province)</div>
+        </fieldset>
+    }
+
+    @if (comercialTypeMetadata.ShowForEdit)
+    {
+        <fieldset data-role="controlgroup" class="fieldsetclass">
+            <legend class="comercialLabel">@Html.LabelFor(x => x.ComercialType)</legend>
+            <div class="comercialEdit">@Html.EditorFor(x => x.ComercialType)</div>
+        </fieldset>
+    }
+
+    @Html.Partial(MVC.Search.Views.CityDistrictAutocomplete, Model)
+    
+    @Html.EditorFor(x => x.Price)
+
+    @if (surfaceMetadata.ShowForEdit)
+    {
+        @Html.EditorFor(x => x.Surface)
+    }
+    @if (numberOfRoomsMetadata.ShowForEdit)
+    {
+        @Html.EditorFor(x => x.NumberOfRooms)
+    }
+    
+    @if (landTypeMetadata.ShowForEdit)
+    {
+        <fieldset data-role="controlgroup" class="fieldsetclass">
+            <legend class="landTypeLabel">@Html.LabelFor(x => x.LandType)</legend>
+            <div class="landTypeEdit">@Html.EditorFor(x => x.LandType)</div>
+        </fieldset>
+        
+    }
+
+    @if (marketSegmentMetadata.ShowForEdit)
+    {
+        var marketSegmentName = ReflectionHelper.GetExpressionAsString<SearchViewModel>(x => x.MarketSegment.SelectedId);
+        var isPrivatePersonName = ReflectionHelper.GetExpressionAsString<SearchViewModel>(x => x.IsPrivatePerson);
+        
+        <script type="text/javascript">
+            @* // on document ready does not work well with JQuery Mobile *@
+            $('#@Consts.JavascriptIds.MainBodyId').live('#@Consts.JavascriptEvents.Pagecreate', function() {
+
+                $("input[name='@(StaticReflectionPoco.SearchViewModel.TransactionTypeId)']").bind("change", function () {
+                    @* // show additional fields if 'sold' transaction type is set *@
+                    if($(this).val() === "@TransactionTypeProvider.SellId" ){
+                        $('#@Consts.JavascriptIds.SoldOptionsId').show();
+                    }else{
+                        $('#@Consts.JavascriptIds.SoldOptionsId').hide();
+                    }
+                });
+
+                trader.manageIsPrivateElement = function() {
+                    if ($("input[name='@(marketSegmentName)']:checked").val() === "@MarketSegmentProvider.PrimaryMarketId") {
+                        if ($('#@isPrivatePersonName') !== null && $('#@isPrivatePersonName') !== undefined) {
+//                            $("#@isPrivatePersonName").click(); // Uncheck checkbox
+                            $('#@Consts.JavascriptIds.IsPrivatePersonId').hide();
+                        }
+                    } else {
+                        if ($('#@isPrivatePersonName') !== null && $('#@isPrivatePersonName') !== undefined) {
+                            $('#@Consts.JavascriptIds.IsPrivatePersonId').show();
+                        }
+                    }
+                };
+
+                $("input[name='@(marketSegmentName)']").bind("change", function () {
+                    trader.manageIsPrivateElement();
+                });
+
+                trader.manageIsPrivateElement();
+
+                // JQuery extension to get parameters from a request
+                $.extend({
+                    getUrlVars: function () {
+                        var vars = [], hash;
+                        var hashes = window.location.href.slice(window.location.href.indexOf('?') + 1).split('&');
+                        for (var i = 0; i < hashes.length; i++) {
+                            hash = hashes[i].split('=');
+                            vars.push(hash[0]);
+                            vars[hash[0]] = hash[1];
+                        }
+                        return vars;
+                    },
+                    getUrlVar: function (name) {
+                        return $.getUrlVars()[name];
+                    }
+                });
+
+                 @* // to hide fields pased on request info, hide if 'sold' transaction type is not set *@
+                if($.getUrlVar('@StaticReflectionPoco.SearchViewModel.TransactionTypeId') === "@TransactionTypeProvider.RentId"){
+                    $('#@Consts.JavascriptIds.SoldOptionsId').hide();
+                }
+            });
+        </script>
+        
+        <div id="@Consts.JavascriptIds.SoldOptionsId" class="marketSegment">
+            @Html.EditorFor(x => x.MarketSegment)
+        </div>
+
+
+        
+    }
+
+    @if (isPrivatePersonMetadata.ShowForEdit)
+    {
+        <fieldset data-role="controlgroup" class="fieldsetclass" id="@Consts.JavascriptIds.IsPrivatePersonId">
+            @Html.EditorFor(x => x.IsPrivatePerson)
+            <legend class="isPrivatePersonLabel">@Html.LabelFor(x => x.IsPrivatePerson)</legend>
+        </fieldset>
+    }
+
+    <button class="searchButton" type="submit" data-role="button">Szukaj</button>
+</form>

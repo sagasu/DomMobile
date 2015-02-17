@@ -1,0 +1,55 @@
+﻿@using Trader.Web.Models.Advert
+@using Trader.Common
+@using Trader.Web.Global
+@using Trader.Web.Extensions
+
+@model AdvertViewModel
+
+@{
+    ViewBag.Title = "Galeria";
+    ViewBag.AdditionalMainBodyCss = "galleryMainBody";
+    Layout = "~/Views/Shared/_Layout.Mobile.cshtml";
+}
+
+@section HeaderSection {
+    @{var returnUrl = Model.IsInvestment ? Url.Url(MVC.Advert.InvestmentDetails(), Model.BuildInvestment()) : Url.Url(MVC.Advert.Details(), Model.BuildSmallVersion());}
+    <div class="galleryReturnToAdvert">
+        <a class="galleryLinkClass" data-role="button" data-ajax="false" href='@returnUrl'></a>
+    </div>
+    @if(!Model.IsInvestment){
+        <div class="nextPreviousPicture">
+            <div class="previousPicture">
+                @if(Model.DisplayedPictureIndex > 0){
+                    <a data-ajax="false" data-role="button" href='@(Url.Url(MVC.Advert.Gallery(), Model.BuildPreviousPicture()))'></a>
+                }
+            </div>
+            <div class="nextPicture">
+                @if (Model.DisplayedPictureIndex + 1< Model.Pictures.Count)
+                {
+                    <a data-ajax="false" data-role="button" href='@(Url.Url(MVC.Advert.Gallery(), Model.BuildNextPicture()))'></a>
+                }
+            </div>
+        </div>
+    }
+}
+
+<div class="pictureBackground">
+    @if (Model.IsInvestment && !string.IsNullOrEmpty(Model.InvestmentPicture))
+    {
+        <div class="picture">
+            <img alt="" src="@Model.InvestmentPicture" />
+        </div>
+    }
+    else if (Model != null && Model.Pictures != null && Model.Pictures.Any())
+    {
+        var pictureToDisplay = Model.Pictures.ElementAt(Model.DisplayedPictureIndex);
+        
+        <div class="picture">
+            <img alt="" src="@pictureToDisplay" />
+        </div>
+    }
+    else
+    { 
+        <div>Nie znaleziono zdjęć</div>
+    }
+</div>

@@ -1,0 +1,15 @@
+Jest jakiœ cookie o nazwie NotMobile, który jest obs³ugiwany po stronie varnish.
+
+Witam,
+
+W kontekœcie portalu Domiporta.
+
+Proszê o skonfigurowanie Varnisha by:
+1. Nie zjada³ cookie o nazwie NotMobile
+2. Je¿eli wykryje, ¿e ¿¹danie zawiera cookie NotMobile to pomimo tego, ¿e klient jest urz¹dzeniem mobilnym przekieruje (puœci) go na pe³n¹ wersjê serwisu.
+
+
+Dziêkujê,
+Mateusz Kopij
+
+

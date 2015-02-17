@@ -1,0 +1,26 @@
+﻿@using Trader.Common.Attributes
+@using Trader.Web.Helpers
+@using Trader.Common
+
+@model IListElements
+
+@if (Model != null && Model.ListOfListElement != null)
+{
+    IList<ListElement> listElements = Model.ListOfListElement.ToList();
+    var index = 1;
+    
+    <fieldset data-role="controlgroup" class="fieldsetclass">
+        @foreach (var element in Model.ListOfListElement)
+        {
+            <input type="radio"
+                    name="@(ViewData.TemplateInfo.HtmlFieldPrefix).@(ReflectionHelper.GetProperty<IListElements>(x => x.SelectedId).Name)"
+                    id="radio-choice-@index"
+                    value="@element.Id" 
+                    @(element.Id == Model.SelectedId ? "checked='checked'" : string.Empty) 
+                    class="GlossaryAsRadioInputClass"/>
+            <label for="radio-choice-@index" class="GlossaryAsRadioLabelClass">@element.Name</label>
+
+            index += 1;
+        }
+    </fieldset>
+}

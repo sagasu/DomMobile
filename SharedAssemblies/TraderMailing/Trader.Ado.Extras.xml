@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Trader.Ado.Extras</name>
+    </assembly>
+    <members>
+        <member name="T:Trader.Ado.Extras.DbCommandExtensionMethods">
+            <summary>
+            Extension methods to simplify ADO pains.
+            </summary>
+        </member>
+        <member name="M:Trader.Ado.Extras.DbCommandExtensionMethods.AddParameter(System.Data.IDbCommand,System.String,System.Object,System.Data.DbType)">
+            <summary>
+            Adds the parameter, to the command <paramref name="cmd"/>,
+            with the name <paramref name="parameterName"/>, <paramref name="value"/> 
+            of the specified type <paramref name="type"/>.
+            </summary>
+            <param name="cmd">The db command.</param>
+            <param name="parameterName">Name of the parameter.</param>
+            <param name="value">The value.</param>
+            <param name="type">Type of the db.</param>
+            <returns>The passed <paramref name="cmd"/>.</returns>
+        </member>
+        <member name="M:Trader.Ado.Extras.DbCommandExtensionMethods.AddParameter(System.Data.IDbCommand,System.String,System.Guid)">
+            <summary>
+            Adds the guid parameter, to the command <paramref name="cmd"/>,
+            with the name <paramref name="parameterName"/>, <paramref name="value"/>.
+            </summary>
+            <param name="cmd">The db command.</param>
+            <param name="parameterName">Name of the parameter.</param>
+            <param name="value">The value.</param>
+            <returns>The passed <paramref name="cmd"/>.</returns>
+        </member>
+        <member name="M:Trader.Ado.Extras.DbCommandExtensionMethods.AddParameter(System.Data.IDbCommand,System.String,System.Int32)">
+            <summary>
+            Adds the int parameter, to the command <paramref name="cmd"/>,
+            with the name <paramref name="parameterName"/>, <paramref name="value"/>.
+            </summary>
+            <param name="cmd">The db command.</param>
+            <param name="parameterName">Name of the parameter.</param>
+            <param name="value">The value.</param>
+            <returns>The passed <paramref name="cmd"/>.</returns>
+        </member>
+        <member name="M:Trader.Ado.Extras.DbCommandExtensionMethods.AddParameter(System.Data.IDbCommand,System.String,System.String)">
+            <summary>
+            Adds the string parameter, to the command <paramref name="cmd"/>,
+            with the name <paramref name="parameterName"/>, <paramref name="value"/>.
+            </summary>
+            <param name="cmd">The db command.</param>
+            <param name="parameterName">Name of the parameter.</param>
+            <param name="value">The value.</param>
+            <returns>The passed <paramref name="cmd"/>.</returns>
+        </member>
+        <member name="M:Trader.Ado.Extras.DbCommandExtensionMethods.AddParameter(System.Data.IDbCommand,System.String,System.Nullable{System.DateTime})">
+            <summary>
+            Adds the DateTime parameter, to the command <paramref name="cmd"/>,
+            with the name <paramref name="parameterName"/>, <paramref name="value"/>, distinguishing nulls.
+            </summary>
+            <param name="cmd">The db command.</param>
+            <param name="parameterName">Name of the parameter.</param>
+            <param name="value">The value.</param>
+            <returns>The passed <paramref name="cmd"/>.</returns>
+        </member>
+        <member name="M:Trader.Ado.Extras.DbCommandExtensionMethods.AddNullParameter(System.Data.IDbCommand,System.String,System.Data.DbType)">
+            <summary>
+            Adds the <see cref="T:System.DBNull"/> parameter, to the command,
+            with the name <paramref name="parameterName"/>, with specified <paramref name="type"/>.
+            </summary>
+            <param name="cmd">The db command.</param>
+            <param name="parameterName">Name of the parameter.</param>
+            <param name="type">Type of the db.</param>
+            <returns>The passed <paramref name="cmd"/>.</returns>
+        </member>
+    </members>
+</doc>

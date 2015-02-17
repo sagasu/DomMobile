@@ -1,0 +1,26 @@
+﻿@using Trader.Web.Models.Search
+@using Trader.Model.Common
+@using Trader.Common
+@using Trader.Model.Glossaries.Providers
+@using Trader.Web.Global
+@using Trader.Web.Helpers
+@using Trader.Web.Extensions
+
+@model SearchViewModel
+
+<ul data-role="listview" class="searchResultHeader">
+    <li class="searchResultHeaderElement">
+        <a data-ajax="false" href='@(Url.Url<SearchViewModel>(MVC.Search.Search(), Model))' class="searchResultHeaderLink">
+        @{
+            var numberOfFoundAdverts = Model.GroupedSearchResults == null ? 0 : Model.GroupedSearchResults.Matches;
+        }
+        <span class="searchResultsNumberOfFoundAdverts">
+            @if(numberOfFoundAdverts > 0){
+                @(Html.DisplayFor(x => Model.GroupedSearchResults.Matches, MVC.Shared.Views.DisplayTemplates.Integer))@: ogłoszeń: 
+            }
+        </span>
+        @Html.Raw(Model.SearchCriteriaAsString.Replace("m2","m<sup>2</sup>"))
+        <span class="blueLink">zmień kryteria</span>
+        </a>
+    </li>
+</ul>

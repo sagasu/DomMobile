@@ -1,0 +1,143 @@
+body {
+    font-size: .85em;
+    font-family: "Trebuchet MS", Verdana, Helvetica, Sans-Serif;
+    color: #232323;
+    background-color: #fff;
+}
+
+header, footer, nav, section {
+    display: block;
+}
+
+ul, li {
+    list-style-type : none;
+	margin : 0px;
+	padding : 0px;
+}
+
+/* Styles for basic forms
+-----------------------------------------------------------*/
+
+fieldset {
+	border : 0px solid #FFF;
+	border-collapse : collapse;
+	margin : 0px;
+	padding : 0px;
+}
+
+.fieldsetclass label {
+	clear : both;
+	display : block;
+	width : 100%;
+}
+
+legend {
+    font-size:1.2em;
+    font-weight: bold;
+}
+
+textarea {
+    min-height: 75px;
+}
+
+.message-dismiss {
+    color: #999999;
+    font-weight: normal;
+    padding-left: 0.5em;
+}
+
+.editor-label {
+    margin: 1em 0 0 0;
+}
+
+.editor-field {
+    margin:0.5em 0 0 0;
+}
+
+
+/* Styles for validation helpers
+-----------------------------------------------------------*/
+.field-validation-error {
+    color: #ff0000;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+.input-validation-error {
+    border: 0px solid #ff0000;
+    background-color: #ffeeee;
+}
+
+.validation-summary-errors {
+    font-weight: bold;
+    color: #ff0000;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+.mainHeader {clear : both;height : 40px;width : 350px;}
+div.logo img {height : 22px !important;}
+.mainHeader .logo {float : left;width : 170px;}
+.mainHeader .magnifierAndReturnToResults {float : left;}
+
+.returnToResultsClass, .magnifier {float : left;padding : 3px 3px 0px 3px;width : 20px;}
+.magnifier {padding : 0px 3px;}
+
+.ui-field-contain label {float : none;clear : both;width : 100%;}
+
+.investmentSearchResultElement {clear : both;display : block;height : 90px;}
+div.ui-radio label, div.ui-radio input {display : inline;height : 20px;width : 20px;}
+.groupedImage img, .groupedImagePrimary img, .investmentImageSpan img {float : left;padding : 0px 5px 0px 0px;}
+.searchResultElement, .groupedSearchResultElement, .investmentSearchResultElementLink .investmentImageSpan img.investmentSearchResultElementPicture {
+	height : 70px;
+	margin : 10px 0px;
+	overflow : hidden;
+}
+.searchTitle div {
+	float : left;
+	padding : 0px 10px 0px 0px;
+}
+
+div.quartic_rec ul.quartic_content li.quartic_product {clear : both;display : block;padding : 0px 0px 10px 0px;}
+div.quartic_rec ul.quartic_content li.quartic_product div.quartic_imagediv {float : left;padding : 0px 10px 0px 0px;width : 80px;}
+div.quartic_rec ul.quartic_content li.quartic_product ul.quartic_description {float : left;width : 120px;}
+.groupedImage span, .groupedImagePrimary span {
+	display : inline-block;
+	height : 60px;
+	padding : 20px 5px 0px;
+	text-align : center;
+}
+.groupedImage, .groupedImagePrimary {
+	display : inline-block;
+	float : left;
+	height : 70px;
+}
+div.detailsDescriptions, div.investmentDetailsPhotoDiv {margin-bottom : 20px;}
+.detailsPhoneEmail, .sendEmailDiv {display : block;height : 45px;}
+.detailsPhone, .investmentDetailsPhone, .sendEmailDiv a.emailSubmitClass {float : left;}
+.detailsEmail, .investmentDetailsEmail, .sendEmailDiv a.cancelButtonEmailClass {float : right;}
+.detailsPhone a, .detailsEmail a, .investmentDetailsPhone a, .investmentDetailsEmail a, 
+.sendEmailDiv a.emailSubmitClass, button {background : #FF6600;color : #FFF;padding : 10px;}
+.ui-btn {text-align : center;}
+button {font-size : 18px;margin : 10px 0px;}
+.investmentDetailsAdditionalDescription {margin : 10px 0px;}
+
+.searchResultNextPreviousButton, .investmentPagination {height : 30px;}
+.searchResultNextPreviousButton .nextResult {float : right;}
+.searchResultNextPreviousButton .previousResult {float : left;}
+.searchResultNextPreviousButton a {
+	background : #333333;
+	border : 0px;
+	border-radius : 0px;
+	box-shadow : none;
+	color : #FFFFFF;
+	display : inline-block;
+	text-align : center;
+	text-shadow : none;
+	padding : 4px;
+	width : 85px;
+}

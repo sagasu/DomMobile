@@ -1,0 +1,13 @@
+﻿@using Trader.Web.Global
+
+<script src="@Url.Content("~/Scripts/jquery.cookie.js")" type="text/javascript"></script>
+
+<script type="text/javascript">
+    trader.setCookie = function () {
+        // Set a per session cookie, expires after 20 min
+        var date = new Date();
+        date.setTime(date.getTime() + (20 * 60 * 1000));
+
+        $.cookie("@Consts.Cookie.NotMobileCookieName", "@Consts.Cookie.NotMobileCookieName", { expires: date, path: '@Consts.Cookie.NotMobileCookiePath', domain: '@Consts.Cookie.NotMobileCookieDomain' });
+    }
+</script>

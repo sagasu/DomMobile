@@ -1,0 +1,22 @@
+﻿@using Trader.Web.Models.Domiporta
+
+@model WebRedirectViewModel
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.Mobile.cshtml";
+    
+}
+@section HeaderSection {
+    @Html.Partial(MVC.Shared.Views.Header_Mobile)
+}
+
+<div class="webRedirect">
+    <div class="webRedirectMessage">Podana strona nie istnieje w wersji mobilnej. Otwórz stronę w pełnej wersji serwisu.</div>
+    <div class="webRedirectLink"><a onclick="javascript:trader.setCookie();" href="@Model.Url">@Model.Url</a></div>
+</div>
+
+@Html.Partial(MVC.Shared.Views.SetNotMobileCookie)
+
+@section FooterSection{
+    @Html.Partial(MVC.Shared.Views.Footer_Mobile)
+}

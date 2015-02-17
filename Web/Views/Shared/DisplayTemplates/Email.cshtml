@@ -1,0 +1,113 @@
+﻿@using Trader.Model.Common
+@using Trader.Web.Global
+@using Trader.Common
+@using Trader.Web.Helpers
+
+@model EmailViewModel
+
+@{ var senderEmailElementId = string.Concat(ViewData.TemplateInfo.HtmlFieldPrefix,"_", StaticReflectionPoco.EmailViewModel.SenderEmail); }
+
+@* // IE on Windows Phone does not support plaveholder attribute, this snipped makes the work*@
+<script>
+    // To detect native support for the HTML5 placeholder attribute
+    var fakeInput = document.createElement("input");
+    var placeHolderSupport = ("placeholder" in fakeInput);
+
+    // Applies placeholder attribute behavior in web browsers that don't support it
+    if (!placeHolderSupport) {
+        var searchField = $("#@senderEmailElementId");
+        var originalText = searchField.attr("placeholder");
+
+        searchField.val(originalText);
+        searchField.addClass("placeholder");
+        searchField.bind("focus", function () {
+            searchField.removeClass("placeholder");
+            if (searchField.val() === originalText) {
+                searchField.val("");
+            }
+        });
+
+        searchField.bind("blur", function () {
+            if (searchField.val().length === 0) {
+                searchField.val(originalText);
+                searchField.addClass("placeholder");
+            }
+        });
+    }
+</script>
+
+
+@if (Model != null)
+{
+    <div Id="@Consts.JavascriptIds.EmailHiddenId" style="display: none;">
+        @(Html.HiddenFor(x => x.AdvertId))
+            
+        <div class="emailLabel">Twój email</div>
+        <div class="emailTitle">
+            @Html.TextBoxFor(x => x.SenderEmail)
+        </div>
+
+        <div class="emailBodyLabel">Treść</div>
+        <div class="emailText">
+            @Html.TextAreaFor(x => x.BodyAsHtml, new { @class="emailBodyArea"})
+        </div>
+
+        <div class="sendEmailDiv">
+            <a class="cancelButtonEmailClass" onclick="trader.colapseEmailForm()" >Anuluj</a>
+            <a onclick="trader.sendEmail()" class="emailSubmitClass" >Wyślij</a>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        var StatusCode = { "Success": 0, "Warning": 1, "Error": 2, "AcceptationNeeded": 3, "DisplayBusinessOperation": 4, "NotValid": 5, "ModifyForm": 6 };
+
+        trader.expandEmailForm = function () {
+            $("#@Consts.JavascriptIds.EmailShowedId").slideUp();
+            $("#@Consts.JavascriptIds.EmailHiddenId").slideDown();
+        }
+
+        trader.colapseEmailForm = function () {
+            $("#@Consts.JavascriptIds.EmailShowedId").slideDown();
+            $("#@Consts.JavascriptIds.EmailHiddenId").slideUp();
+        }
+
+        trader.sendEmail = function () {
+            $.ajax({
+                url: '@(Url.Action("SendEmail", "Email"))',
+                dataType: "json",
+                data: {
+                    @(StaticReflectionPoco.EmailViewModel.AdvertId): $('#@(string.Concat(ViewData.TemplateInfo.HtmlFieldPrefix,"_", StaticReflectionPoco.EmailViewModel.AdvertId).Replace(".","_"))').val(),
+                    @(StaticReflectionPoco.EmailViewModel.SenderEmail): $('#@(string.Concat(ViewData.TemplateInfo.HtmlFieldPrefix, "_", StaticReflectionPoco.EmailViewModel.SenderEmail).Replace(".", "_"))').val(),
+                    @(StaticReflectionPoco.EmailViewModel.BodyAsHtml): $('#@(string.Concat(ViewData.TemplateInfo.HtmlFieldPrefix, "_", StaticReflectionPoco.EmailViewModel.BodyAsHtml).Replace(".", "_"))').val()
+                },
+                minLength: 0
+            })
+            .success(function (data) {
+                @* // JQuery Message plugin sucs when used in ajax call, everything needs to be done by hand :( *@
+
+                if (data.Status === StatusCode.Success) {
+                    trader.colapseEmailForm();
+
+                    $(".message-text").text("");
+                    $("#@Consts.JavascriptIds.EmailMessageId").message({ dismiss: false, type: "info", message: data.Message });
+                    $(".message-text").text(data.Message);
+                    $("#@Consts.JavascriptIds.EmailMessageId").message("show");
+
+                    $("#@Consts.JavascriptIds.EmailMessageId").click(function () {
+                        $("#@Consts.JavascriptIds.EmailMessageId").message("hide");
+                    });
+                    return;
+                }
+
+                $("#@Consts.JavascriptIds.EmailMessageId").click(function () {
+                    $("#@Consts.JavascriptIds.EmailMessageId").message("hide");
+                });
+
+                $(".message-text").text("");
+                $("#@Consts.JavascriptIds.EmailMessageId").message({ dismiss: false, type: "error", message: data.Message });
+                $(".message-text").text(data.Message);
+                $("#@Consts.JavascriptIds.EmailMessageId").message("show");
+            });
+        }
+    </script>
+}

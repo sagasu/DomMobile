@@ -1,0 +1,12 @@
+﻿@using Trader.Web.Models
+
+@model PhoneViewModel
+
+@if (Model != null)
+{
+    var phone = Model.FirstPhone ?? Model.MobilePhone ?? Model.SecondPhone;
+    if (!string.IsNullOrEmpty(phone))
+    {
+        <a href="tel:@phone" data-role="button" data-icon="grid">Zadzwoń</a>
+    }
+}

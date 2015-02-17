@@ -1,0 +1,86 @@
+﻿@using Trader.Web.Models.Search
+@using Trader.Common
+@using Trader.Web.Global
+@using Trader.Web.Extensions
+@using Trader.Web.Helpers
+
+@model SearchViewModel
+
+<div data-role="fieldcontain" class="fieldsetclass" id="@Consts.JavascriptIds.CityInputId">
+    @Html.LabelFor(x => x.City)
+    @Html.TextBoxFor(x => x.City)
+</div>
+
+@* ie 9 - windows phone 7.5 has it's own autofocus *@
+@{
+    var showDistrictSelect =  Model.DistrictSelect.SelectedId != default(int) ? true : false;
+    var isFocusEnabled = HttpContext.Current.Request.Browser.IsBrowser("IEMobile") ? HttpContext.Current.Request.Browser.MajorVersion >= 9 ? false : true : true;
+}
+
+@* // Show one of the following fields, if DistrictSelect.SelectedId then it has priority over District *@
+<div class="fieldsetclass" data-role="fieldcontain" @if(showDistrictSelect){
+                                  @:style='display: none;'
+                              } id="@Consts.JavascriptIds.DistrictDiv" >
+    @Html.LabelFor(x => x.District)
+    @Html.TextBoxFor(x => x.District)
+</div>
+
+<div class="districtSelectdiv fieldsetclass" data-role="fieldcontain" @if(!showDistrictSelect){
+                                  @:style='display: none;'
+                              } id="@Consts.JavascriptIds.DistrictSelectDiv">
+    @Html.LabelFor(x => x.DistrictSelect, new { @class="selectLabel"})
+    @Html.EditorFor(x => x.DistrictSelect)
+</div>
+
+<script type="text/javascript">
+    @{ var cityPropertyName = StaticReflectionPoco.SearchViewModel.City; }
+
+    trader.autoCompleteFixSet = function() {
+        $(this).attr('autocomplete', 'off');
+    };
+    trader.autoCompleteFixUnset = function() {
+        $(this).removeAttr('autocomplete');
+    };
+
+     $('#@Consts.JavascriptIds.MainBodyId').live('@Consts.JavascriptEvents.Pagecreate', function (event) {
+        trader.triggeredByFocus = 'triggeredByFocus';
+
+        $('#@cityPropertyName').autocomplete({
+            source: function (request, response) {
+                if($('#@cityPropertyName').val() !== '' || request.term === trader.triggeredByFocus){
+                    $.ajax({
+                        url: '@Url.Action(MVC.Autocomplete.City())',
+                        dataType: "json",
+                        data: {
+                            city: $('#@cityPropertyName').val()
+                        },
+                        minLength: 0
+                    })
+                    .success(function (data) {
+                            response($.map(data, function (item) {
+                                return {
+                                    label: item.Name,
+                                    value: item.Name
+                                }
+                            }))
+                        })
+                }
+            },
+            minLength: 0
+        }).focus(trader.autoCompleteFixSet).blur(trader.autoCompleteFixUnset).removeAttr('autocomplete');
+
+
+        @* // This is to handle showing 5 cities with biggest amount of adverts when it gain focus *@
+        $("#@cityPropertyName").bind("click", function (event, ui){
+            @if(isFocusEnabled)
+            {
+                @:$(window).scrollTop($('#@Consts.JavascriptIds.CityInputId').position().top);
+            }
+            
+            if($('#@cityPropertyName').val() === ''){
+                $("#@cityPropertyName").autocomplete('search', trader.triggeredByFocus);
+            }
+        });
+
+    });
+</script>

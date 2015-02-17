@@ -1,0 +1,33 @@
+﻿@*
+  // This is a code deployed to default-header2-frame.htm file in full domiporta service, to enable it to display 'return to mobile version link' if a cookie exists.
+  // The cookie is set when a user is redirected from a mobile version to full domiporta
+  // This is kept with Const's so if you modify them in Const file be sure to modify it on old Domiporta (full version)
+*@
+
+@using Trader.Web.Global
+
+<div id="returnToMobileId" class="returnToMobile" style="display: none;"><a href="http://m.domiporta.pl" onclick="javascript:returnToMobileVersion();">Wróć do wersji na telefon</a></div>
+
+<script type="text/javascript">
+    function showMobileLinkIfCookieExists(cookieName) {
+        var i, x, y, ARRcookies = document.cookie.split(";");
+        for (i = 0; i < ARRcookies.length; i++) {
+            x = ARRcookies[i].substr(0, ARRcookies[i].indexOf("="));
+            y = ARRcookies[i].substr(ARRcookies[i].indexOf("=") + 1);
+            x = x.replace(/^\s+|\s+$/g, "");
+            if (x == cookieName) {
+                document.getElementById('returnToMobileId').style.display = "block";
+            }
+        }
+    }
+
+    function delCookieForMobile(name, path, domain) {
+        document.cookie = name + "=" + ((path) ? ";path=" + path : "") + ((domain) ? ";domain=" + domain : "") + ";expires=Thu, 01-Jan-1970 00:00:01 GMT"; 
+    }
+
+    function returnToMobileVersion() {
+        delCookieForMobile('@Consts.Cookie.NotMobileCookieName', '@Consts.Cookie.NotMobileCookiePath', '@Consts.Cookie.NotMobileCookieDomain');
+    }
+
+    showMobileLinkIfCookieExists('@Consts.Cookie.NotMobileCookieName');
+</script>

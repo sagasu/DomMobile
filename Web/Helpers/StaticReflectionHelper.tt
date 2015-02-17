@@ -1,0 +1,83 @@
+﻿<#@ template debug="false" hostspecific="true" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="System.Xml" #>
+<#@ assembly name="$(SolutionDir)\Web\bin\Web.dll" #>
+<#@ assembly name="$(SolutionDir)\Web\bin\Common.dll" #>
+<#@ assembly name="$(SolutionDir)\Web\bin\Model.dll" #>
+
+<#@ import namespace="System.Xml" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Reflection" #>
+<#@ import namespace="Trader.Web.Models.Advert" #>
+<#@ import namespace="Trader.Web.Helpers" #>
+<#@ import namespace="Trader.Common.Attributes" #>
+<#@ import namespace="Trader.Model.Solr" #>
+
+
+<#@ output extension=".cs" #>
+/*
+This is auto-generated class, modify t4 template, instead of it. There is a test for a logic in a template: StaticReflectionHelperTest
+*/
+
+namespace Trader.Web.Helpers
+{
+    public static class StaticReflectionPoco
+    {
+		<#
+			var dictionary = this.GetReflectionAsDictionary();
+			foreach (var key in dictionary.Keys)
+            {
+				#>
+					public static class <#= key #> {
+				<# 
+				
+                	foreach (var propertyName in dictionary[key])
+                	{
+                    	#>
+							public const string <#= propertyName #> = "<#= propertyName #>";
+						<# 
+                	}
+				#>
+					}
+				<# 
+            }
+		#>
+	}
+}
+
+<#+
+        public IDictionary<string,List<string>> GetReflectionAsDictionary()
+        {
+            var propertiesWithStaticReflectionAttribute =
+                (from assembly in
+                     new[]
+                         {
+                             Assembly.GetAssembly(typeof(AdvertViewModel)),
+                             Assembly.GetAssembly(typeof(SearchResultViewModel)),
+							 Assembly.GetAssembly(typeof(StaticReflectionAttribute))
+                         }
+                 from type in assembly.GetTypes()
+                 from property in type.GetProperties()
+                 where property.GetCustomAttributes(typeof(StaticReflectionAttribute), true).Any()
+                                                           select new StaticReflectionElement{TypeName = type.Name.Replace("`", ""), PropertyName = property.Name});
+
+            var dictionary = new Dictionary<string,List<string>>();
+            foreach (var staticReflectionElement in propertiesWithStaticReflectionAttribute)
+            {
+                if (dictionary.ContainsKey(staticReflectionElement.TypeName))
+                {
+                    dictionary[staticReflectionElement.TypeName].Add(staticReflectionElement.PropertyName);
+                }
+                else
+                {
+                    dictionary[staticReflectionElement.TypeName] = new List<string>
+                        {
+                            staticReflectionElement.PropertyName 
+                        };
+                }
+            }
+			return dictionary;
+        }
+#>

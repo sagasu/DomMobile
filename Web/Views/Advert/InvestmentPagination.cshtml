@@ -1,0 +1,21 @@
+﻿@using Trader.Web.Models.Advert
+@using Trader.Common
+
+@model InvestmentViewModel
+
+<div class="investmentPagination">
+    @if (Model.SearchResultViewModel != null && 
+        (Model.SearchResultViewModel.SearchResults.Count() >= Model.InvestmentSearchOptions.PaginationNumerOfRows) && 
+        (Model.SearchResultViewModel.NumFound > Model.InvestmentSearchOptions.PaginationNumerOfRows + Model.InvestmentSearchOptions.PaginationStart))
+    {
+        <div class="investmentNextResult">
+            <a data-role="button" data-ajax="false" href='@(Url.Action(MVC.Advert.InvestmentDetails()))?@MvcGetParamsSerializer.Serialize(Model.NextPaginationBuilder())'>Następne</a>
+        </div>
+    }
+    @if (Model.InvestmentSearchOptions.PaginationStart > 0)
+    {
+        <div class="investmentPreviousResult">
+            <a data-role="button" data-ajax="false" href='@(Url.Action(MVC.Advert.InvestmentDetails()))?@MvcGetParamsSerializer.Serialize(Model.PreviousPaginationBuilder())'>Poprzednie</a>
+        </div>
+    }
+</div>

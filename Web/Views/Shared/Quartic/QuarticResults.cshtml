@@ -1,0 +1,34 @@
+﻿@using Trader.Web.Global
+
+<script type="text/javascript">
+    function quartic_rec(rec) {
+        var content = "";
+        for (var position = 0; position < rec.length; position++) {
+            var advertId = rec[position][0];
+            var quarticPrefix = rec[position][1];
+            var imgSrc = rec[position][2];
+            var title = rec[position][3];
+            var price = rec[position][4];
+
+            content += trader.buildContent(advertId, quarticPrefix, imgSrc, title, price);
+        }
+        trader.buildFrame(content);
+    }
+
+    trader.buildContent = function(advertId, quarticPrefix, imgSrc, title, price) {
+        var advertDetailsUrl = '@(Url.Action("SimpleDetails", "Advert", null, "http"))' + '?Id=' + advertId;
+        encodedUrl = encodeURIComponent(advertDetailsUrl);
+        var url = quarticPrefix + '&url=' + encodedUrl;
+
+        price = trader.formatNumber(price, '.', ' ');
+
+        var content = '<li class="quartic_product"><div class="quartic_imagediv"><a href="' + url + '"><img class="quartic_image" src="' + imgSrc + '" alt="" /></a></div><ul class="quartic_description"><li class="quartic_name"><a href="' + url + '">' + title + '</a></li><li class="quartic_author"></li><li class="quartic_price">' + price + '</li></ul></li>';
+        return content;
+    };
+
+    trader.buildFrame = function(content) {
+        var quarticBase = '<div id="quartic_main"><div class="quartic_rec"><div class="quartic_header">Oferty dla Ciebie</div><ul class="quartic_content">' + content + '</ul></div></div>';
+
+        $('#@Consts.JavascriptIds.QuarticFrameId').html(quarticBase);
+    };
+</script>

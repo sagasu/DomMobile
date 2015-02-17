@@ -1,0 +1,31 @@
+﻿@using Trader.Web.Models.Search
+@using Trader.Model.Glossaries.Providers
+@using Trader.Web.Extensions
+
+@{
+    ViewBag.Title = "Domiporta.pl - ogłoszenia nieruchomości";
+    Layout = "~/Views/Shared/_Layout.AndroidLess22.cshtml";
+}
+
+@section HeaderSection {
+    @Html.Partial(MVC.Shared.Views.Header_Mobile)
+}
+
+@Html.Partial(MVC.Shared.Views.Quartic.QuarticIndexParams)
+
+<ul data-role="listview" class="categoryList">
+    @foreach (var category in new CategoryProvider().GetValues())
+    {
+        <li class="categoryListElement">
+            <a class="categoryListElementLink" 
+                data-ajax="false"
+               href="@Url.Url(MVC.Search.Search(), new SearchViewModel { CategoryId = category.Id })">@category.Name</a>
+        </li>
+    }
+</ul>
+
+@Html.Partial(MVC.Shared.Views.Quartic.QuarticForHP)
+
+@section FooterSection{
+    @Html.Partial(MVC.Shared.Views.Footer_Mobile)
+}

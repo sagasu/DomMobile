@@ -1,0 +1,14 @@
+﻿@model DateTime?
+
+@if(Model.HasValue){
+    <span class="searchResultDateClass">
+        dodano: 
+        @if(Model.Value.Date.Equals(DateTime.Now.Date)){
+            @:dziś
+        }else if(Model.Value.Date.AddDays(-1).Equals(DateTime.Now.Date)){
+            @:wczoraj
+        }else{
+            @Html.Partial("~/Views/Shared/DisplayTemplates/Date.cshtml", Model.Value)
+        }
+    </span>
+}

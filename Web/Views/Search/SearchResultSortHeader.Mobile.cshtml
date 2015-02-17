@@ -1,0 +1,22 @@
+﻿@using Trader.Web.Models.Search
+@using Trader.Common
+@using Trader.Model.Glossaries.Providers
+@using Trader.Web.Global
+@using Trader.Web.Extensions
+
+@model SearchViewModel
+
+<div data-role="fieldcontain" class="searchOptionDiv">
+    <div data-role="fieldcontain">@Html.LabelFor(x => x.SearchOptions.OrderBy) @Html.EditorFor(x => x.SearchOptions.OrderBy)</div>
+
+    <script type="text/javascript">
+        var mobileSearchCriteria = '@(ReflectionHelper.GetExpressionAsString<SearchViewModel>(x => x.SearchOptions.OrderBy.SelectedId, "_"))';
+        var mobileSearchCriteriaName = '@(ReflectionHelper.GetExpressionAsString<SearchViewModel>(x => x.SearchOptions.OrderBy.SelectedId))';
+        var locationBase = '@Html.Raw(Url.Url(MVC.Search.SearchResult(),Model.ShallowCloneWoSearchResultsAndWoMobileSearchCriteria()))';
+
+        $('#' + mobileSearchCriteria).live("change", function (e) {
+            document.location.href = locationBase + '&' + mobileSearchCriteriaName + "=" + $("#" + mobileSearchCriteria).val();
+        });
+
+    </script>
+</div>

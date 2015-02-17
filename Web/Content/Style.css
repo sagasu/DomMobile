@@ -1,0 +1,23 @@
+﻿/* This is for a table results start*/
+table { width:100%; }
+table caption { text-align:left;  }
+table thead th { text-align:left; border-bottom-width:1px; border-top-width:1px; }
+table th, td { text-align:left; padding:6px;} 
+/* This is for a table results end*/
+
+.placeholder {
+color: #aaa;
+}
+
+.ui-page .ui-footer
+{
+    padding-top: 0px;
+    border-top-color: #FFFFFF;
+}
+
+div.quartic_rec div.quartic_header{ margin-bottom:0px; }
+
+.reklama 
+{
+    background: #FFFFFF;
+}

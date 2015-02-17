@@ -1,0 +1,75 @@
+.mainBody header {
+	position: relative;
+	background: #eee url(/Content/images/linear_bg_2.png);
+	background-image: linear-gradient(top, #FFFFFF 15%, #E5E5E5 100%);
+	background-image: -o-linear-gradient(top, #FFFFFF 15%, #E5E5E5 100%);
+	background-image: -moz-linear-gradient(top, #FFFFFF 15%, #E5E5E5 100%);
+	background-image: -webkit-linear-gradient(top, #FFFFFF 15%, #E5E5E5 100%);
+	background-image: -ms-linear-gradient(top, #FFFFFF 15%, #E5E5E5 100%);
+	border : none;
+	border-bottom : 1px solid #CCC;
+	margin : 0px 0px 1px 0px;
+	display : block;
+}
+.mainBody header div.logo, .mainBody header div.magnifierAndReturnToResults, .mainBody header div.magnifier, .mainBody header div.returnToResultsClass, 
+.ui-field-contain label, .ui-field-contain div.ui-select, .searchOptionDiv .ui-field-contain, .searchResultNextPreviousButton, div.rangeclass, 
+.ui-content .detailsPhoneEmail, .ui-content .ivestmnetDetailsPhoneEmail, .mainBody.galleryMainBody header {display : block;}
+.investmentDetailsDescriptionLink.ui-link {clear : both;display : block;float : none;zoom : 1;}
+.mainBody header div.logo, .mainBody header div.magnifier, .mainBody header div.returnToResultsClass {float : left;height : 46px;width : 150px;}
+.mainBody header div.logo {padding-bottom : 0px;}
+.mainBody header div.magnifierAndReturnToResults, .mainBody header div.magnifier, 
+.mainBody header div.nextPreviousPicture, .ui-page .ui-header .nextPreviousPicture .nextPicture {float : right;}
+.mainBody header div.returnToResultsClass, .mainBody header div.galleryReturnToAdvert, .ui-page .ui-header .nextPreviousPicture .previousPicture {float : left;}
+.mainBody header div.magnifierAndReturnToResults {width : 85px;}
+.mainBody header div.returnToResultsClass {width : 40px;}
+.mainBody header div.magnifier {text-align : center;width : 45px;}
+.ui-field-contain label, .ui-field-contain div.ui-select, .previousResult, div.rangeclass input.ui-input-text, div.rangeclass label.ui-input-text, 
+.ui-content .detailsPhoneEmail div.detailsPhone, .ui-content .ivestmnetDetailsPhoneEmail div.investmentDetailsPhone {float : left;}
+.nextResult, .ui-content .detailsPhoneEmail div.detailsEmail, .ui-content .ivestmnetDetailsPhoneEmail div.investmentDetailsEmail {float : right;}
+.previousResult, .nextResult {display : inline-block;width : 95px;}
+.searchOptionDiv.ui-field-contain {text-align : right;}
+.groupedSearchResultList .searchResultElement {
+	filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=#FFFFFF, endColorstr=#E5E5E5);
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient (GradientType=0, startColorstr=#FFFFFF, endColorstr=#E5E5E5)";
+}
+/* .ui-field-contain label {padding : 10px 0px 0px;text-align: right;width: 87%;} */
+.ui-field-contain label {padding : 10px 0px 0px;text-align: left;}
+.ui-field-contain div.ui-select {width : 200px;}
+
+.ui-btn-inner {
+	padding: 0em 25px 0.6em;
+}
+
+div.rangeclass {
+	height : 40px;
+}
+
+div.rangeclass input.ui-input-text, div.rangeclass label.ui-input-text {
+	width : 0px;
+}
+
+div.rangeclass input.ui-input-text {
+	width : 75px;
+}
+
+.marketSegment .GlossaryAsRadioLabelClass .ui-btn-text, .ui-checkbox .ui-btn-text {display : inline-block;font-weight : normal;margin : 0px 0px 0px 0px;padding : 8px 0px 0px 0px;}
+form .ui-field-contain label {display: block;}
+.searchOptionDiv .ui-field-contain label {display: inline;}
+.ui-field-contain label {margin : 0px 6px 0px 0px;}
+
+.mainBody.galleryMainBody header {height : 65px;}
+.ui-page .ui-header .galleryReturnToAdvert, .ui-page .ui-header .nextPreviousPicture {
+	width : 150px;
+}
+
+.ui-page .ui-header .nextPreviousPicture .previousPicture, .ui-page .ui-header .nextPreviousPicture .nextPicture {
+	width : 70px;
+}
+
+.ui-header div.returnToResultsClass a span {padding : 16px 6px 0px 10px;}
+.ui-header div.logo img {line-height : 0px;padding : 13px 0px 0px 10px;}
+
+.groupedSearchResultList.ui-listview .searchResultElement, .groupedSearchResultElement {
+	border-bottom: 1px solid #FFF;
+	text-shadow : none;
+}

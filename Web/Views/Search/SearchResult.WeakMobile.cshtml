@@ -1,0 +1,30 @@
+﻿@using Trader.Web.Models.Search
+@using Trader.Common
+
+@model SearchViewModel
+@{
+    ViewBag.Title = Model.SearchCriteriaAsString.Replace(",", "");
+    Layout = "~/Views/Shared/_Layout.WeakMobile.cshtml";
+}
+
+@section HeaderSection {
+    <div class="headerWithMagnifier">
+        @Html.Partial(MVC.Shared.Views.Header_Mobile)
+        <div class="magnifier"><a data-role="button" data-ajax="false" href='@Url.Action(MVC.Search.Search())?@MvcGetParamsSerializer.Serialize(Model)'><img src="@Url.Content("~/Content/images/ikonka-lupka.png")" alt="")"></a></div>
+    </div>
+}
+
+@section FooterSection{
+    @Html.Partial("Footer.Mobile")
+}
+
+@* using mvc helper with a view does not work here*@
+@if (Model.CategoryId == default(int)) { Response.Redirect(Url.Action("Index", "Home")); }
+
+@Html.Partial(MVC.Search.Views.SearchResultHeader_Mobile)
+
+@Html.Partial(MVC.Search.Views.SearchResultSortHeader_Mobile)
+
+@Html.Partial(MVC.Shared.Views.GroupedSearchResultList_Mobile, Model)
+
+@Html.Partial(MVC.Search.Views.SearchResultPaginationFloatingFooter_Mobile)

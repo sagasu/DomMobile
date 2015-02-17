@@ -1,0 +1,122 @@
+﻿@using System.Web.Script.Serialization
+@using Trader.Web.Models
+@using Trader.Web.Extensions
+@using Trader.Common
+
+@model SearchViewModel
+@{
+    ViewBag.Title = "Search";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Search</h2>
+
+<form id="form" class="giftListEditor">
+
+@*    <div data-role="fieldcontain">
+        <select data-bind="options: model.Categories.ListOfListElement,
+                           optionsText: 'Name',
+                           optionsValue: 'Id',
+                           value: 'model.Categories.SeletedId'"></select>*@
+
+    <div data-role="fieldcontain">
+        <select data-bind="optionsCaption: 'Wybierz',
+                           options:  SearchViewModel.Categories.ListOfListElement,
+                           optionsText: 'Name',
+                           optionsValue: 'Id',
+                           value: 'selectedElement'"></select>
+    </div>
+
+    <div data-role="fieldcontain">
+        @Html.LabelFor(x=>x.City)
+        @Html.TextBoxForK(x => x.City)
+    </div>
+ 
+     <div data-role="fieldcontain">
+        @Html.LabelFor(x => x.District)
+        @Html.TextBoxForK(x => x.District)
+    </div>
+
+    <div data-role="fieldcontain">
+        <select data-bind="optionsCaption: 'Wybierz',
+                           options: SearchViewModel.AdvertType.ListOfListElement,
+                           optionsText: 'Name',
+                           optionsValue: 'Id',
+                           value: 'selectedElement'"></select>
+    </div>
+
+    <div data-role="fieldcontain">
+        <select data-bind="optionsCaption: 'Wybierz',
+                           options: SearchViewModel.Region.ListOfListElement,
+                           optionsText: 'Name',
+                           optionsValue: 'Id',
+                           value: 'selectedElement'"></select>
+    </div>
+
+    <div data-role="fieldcontain">
+       <label for="select-choice-1" class="select">Shipping method:</label>
+       <select name="select-choice-1" id="select-choice-1">
+          <option value="standard">Standard: 7 day</option>
+          <option value="rush">Rush: 3 days</option>
+          <option value="express">Express: next day</option>
+          <option value="overnight">Overnight</option>
+       </select>
+    </div>
+
+    <div data-role="fieldcontain">
+        @Html.LabelFor(x=>x.PriceFrom)
+        @Html.TextBoxForK(x => x.PriceFrom)
+    </div>
+    <div data-role="fieldcontain">
+        @Html.LabelFor(x => x.PriceTo)
+        @Html.TextBoxForK(x => x.PriceTo)
+    </div>
+     <div data-role="fieldcontain">
+        @Html.LabelFor(x => x.SurfaceFrom)
+        @Html.TextBoxForK(x => x.SurfaceFrom)
+    </div>
+    <div data-role="fieldcontain">
+        @Html.LabelFor(x => x.SurfaceTo)
+        @Html.TextBoxForK(x => x.SurfaceTo)
+    </div>
+    <div data-role="fieldcontain">
+        @Html.LabelFor(x=>x.NumberOfRoomsFrom)
+        @Html.TextBoxForK(x => x.NumberOfRoomsFrom)
+    </div>
+    <div data-role="fieldcontain">
+        @Html.LabelFor(x => x.NumberOfRoomsTo)
+        @Html.TextBoxForK(x => x.NumberOfRoomsTo)
+    </div>
+
+    <span data-bind="text: SearchViewModel.District()"></span>
+
+    <button type="submit" data-role="button">Submit</button>
+</form>
+
+<script type="text/javascript">
+    var initialData = @(new HtmlString(new JavaScriptSerializer().Serialize(Model)));
+
+    var viewModel = {
+        SearchViewModel : ko.mapping.fromJS(initialData),
+        selectedElement: ko.observable(),
+
+        save: function() {
+            @* //ko.utils.postJson(location.href, { SearchViewModel: this.SearchViewModel }); *@
+
+            var viewModelAsJson = ko.toJSON(viewModel.SearchViewModel);
+            $.post('@Url.Action("search", "search")', "SearchViewModel=" + viewModelAsJson, function(returnedData) {
+                
+            })
+        }
+    };
+
+    $(function() {
+        ko.applyBindings(viewModel);
+
+        $("#form").validate({
+            submitHandler: function() {
+                viewModel.save();
+            }
+        });
+    });
+</script>

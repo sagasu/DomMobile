@@ -1,0 +1,698 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{7A44ABFB-7C2F-4CDC-AEA4-1FB8EB075AA4}</ProjectGuid>
+    <ProjectTypeGuids>{E53F8FEA-EAE0-44A6-8774-FFD645390401};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Trader.Web</RootNamespace>
+    <AssemblyName>Web</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <MvcBuildViews>true</MvcBuildViews>
+    <UseIISExpress>false</UseIISExpress>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper">
+      <HintPath>..\packages\AutoMapper.2.0.0\lib\net40-client\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="Elmah, Version=1.2.14706.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\elmah.corelibrary.1.2.2\lib\Elmah.dll</HintPath>
+    </Reference>
+    <Reference Include="ElmahR.Elmah">
+      <HintPath>..\packages\ElmahR.Elmah.0.7.2.0\lib\net35\ElmahR.Elmah.dll</HintPath>
+    </Reference>
+    <Reference Include="FiftyOne.Foundation">
+      <HintPath>..\packages\51Degrees.mobi.2.0.1.2\lib\NET40\FiftyOne.Foundation.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentValidation">
+      <HintPath>..\packages\FluentValidation.3.2.0.0\lib\Net40\FluentValidation.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentValidation.Mvc">
+      <HintPath>..\packages\FluentValidation.MVC3.3.2.0.0\lib\Net40\FluentValidation.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Glimpse.Core">
+      <HintPath>..\packages\Glimpse.0.87\lib\net40\Glimpse.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Glimpse.Mvc3">
+      <HintPath>..\packages\Glimpse.Mvc3.0.87\lib\net40\Glimpse.Mvc3.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\log4net.1.2.10\lib\2.0\log4net.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommonServiceLocator.1.0\lib\NET35\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.0.7.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.4.0.7\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject">
+      <HintPath>..\packages\Ninject.2.2.1.4\lib\net40-Full\Ninject.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Extensions.Conventions">
+      <HintPath>..\packages\ninject.extensions.conventions.2.2.0.5\lib\net40-Full\Ninject.Extensions.Conventions.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Extensions.Logging">
+      <HintPath>..\packages\Ninject.Extensions.Logging.2.2.0.4\lib\net40-Full\Ninject.Extensions.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Extensions.Logging.Log4Net">
+      <HintPath>..\packages\Ninject.Extensions.Logging.Log4net.2.2.0.4\lib\net40-Full\Ninject.Extensions.Logging.Log4Net.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Web.Mvc">
+      <HintPath>..\packages\Ninject.MVC3.2.2.2.0\lib\net40-Full\Ninject.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="Ninject.Web.Mvc.FluentValidation, Version=2.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Ninject.Web.Mvc.FluentValidation.2.2.0.7\lib\net40-Full\Ninject.Web.Mvc.FluentValidation.dll</HintPath>
+    </Reference>
+    <Reference Include="NinjectAdapter">
+      <HintPath>..\packages\CommonServiceLocator.NinjectAdapter.1.0.0.0\lib\NinjectAdapter.dll</HintPath>
+    </Reference>
+    <Reference Include="RazorEngine">
+      <HintPath>..\packages\RazorEngine.3.0.8\lib\net40\RazorEngine.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.Razor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\RazorEngine.3.0.8\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.WebPages, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>_bin_deployableAssemblies\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.XML" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Admin.ElmahController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="AdvertController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\Messages.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Messages.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Start\MobileViewEnginesBootstrapper.cs" />
+    <Compile Include="App_Start\NinjectMVC3.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\ElmahController.cs" />
+    <Compile Include="Attributes\AdvertIdRequiredBinderAttribute.cs" />
+    <Compile Include="Attributes\SearchViewModelBinderAttribute.cs" />
+    <Compile Include="Attributes\SimpleErrorHandleAttribute.cs" />
+    <Compile Include="Attributes\SolrModelBinderAttribute.cs" />
+    <Compile Include="Attributes\WebAdvertBinderAttribute.cs" />
+    <Compile Include="Attributes\WebSearchResultSecondaryMarketBinderAttribute.cs" />
+    <Compile Include="Attributes\WebSearchResultPrimaryOrSecondaryMarketBinderAttribute.cs" />
+    <Compile Include="Attributes\FromJsonAttribute.cs" />
+    <Compile Include="Attributes\RedirectMobileDevicesToMobileAreaAttribute.cs" />
+    <Compile Include="Attributes\SimpleValidationAttribute.cs" />
+    <Compile Include="Attributes\WebGalleryBinderAttribute.cs" />
+    <Compile Include="Attributes\WebInvestmentBinderAttribute.cs" />
+    <Compile Include="Attributes\WebSearchResultBinderAttribute.cs" />
+    <Compile Include="Attributes\WebSearchResultPrimaryMarketBinderAttribute.cs" />
+    <Compile Include="AutocompleteController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Automapper\AutoMapperBase.cs" />
+    <Compile Include="Automapper\AutoMapperUrlMaps.cs" />
+    <Compile Include="CityController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\AdvertController.cs" />
+    <Compile Include="Controllers\AutocompleteController.cs" />
+    <Compile Include="Controllers\BaseContoller.cs" />
+    <Compile Include="Controllers\CityController.cs" />
+    <Compile Include="Controllers\DomiportaController.cs" />
+    <Compile Include="Controllers\DomiportaRPUrlMapController.cs" />
+    <Compile Include="Controllers\EmailController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
+    <Compile Include="Controllers\ServiceController.cs" />
+    <Compile Include="Controllers\ViewSwitcherController.cs" />
+    <Compile Include="DomiportaController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DomiportaRPUrlMapController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EmailController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Extensions\HtmlHelperExtensions.cs" />
+    <Compile Include="Extensions\ModelStateExtensions.cs" />
+    <Compile Include="Extensions\UrlHelperExtensions.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Global\Consts.cs" />
+    <Compile Include="Helpers\AdvertHelper.cs" />
+    <Compile Include="Automapper\AutoMapperConfig.cs" />
+    <Compile Include="Helpers\BindersHelper.cs" />
+    <Compile Include="Helpers\CategoryHelper.cs" />
+    <Compile Include="Helpers\ClientNumberValidatorProvider.cs" />
+    <Compile Include="Helpers\CreateRuleBis.cs" />
+    <Compile Include="Helpers\CustomModelMetadataProvider.cs" />
+    <Compile Include="Helpers\DomiportaHelper.cs" />
+    <Compile Include="Helpers\FormatHelper.cs" />
+    <Compile Include="Helpers\HtmlPropertiesProvider.cs" />
+    <Compile Include="Helpers\MessageHelper.cs" />
+    <Compile Include="Helpers\MobileCapableRazorViewEngine.cs" />
+    <Compile Include="Helpers\MobileCapableWebFormViewEngine.cs" />
+    <None Include="Helpers\StaticReflectionHelper.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>StaticReflectionHelper1.cs</LastGenOutput>
+    </None>
+    <Compile Include="Helpers\RegexHelper.cs" />
+    <Compile Include="Helpers\RegisterRPRoutes.cs" />
+    <Compile Include="Helpers\RegisterOldRoutes.cs" />
+    <Compile Include="Helpers\SearchCriteriaHelper.cs" />
+    <Compile Include="Helpers\SearchHelper.cs" />
+    <Compile Include="Helpers\SearchViewModelHelper.cs" />
+    <Compile Include="Helpers\StaticReflectionElement.cs" />
+    <Compile Include="Helpers\StaticReflectionHelper1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>StaticReflectionHelper.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Helpers\TimespanHelper.cs" />
+    <Compile Include="HomeController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="LoginController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Mobile\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Mobile\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Advert\AdvertViewModel.cs" />
+    <Compile Include="Models\Advert\InvestmentViewModel.cs" />
+    <Compile Include="Models\Advert\UserViewModel.cs" />
+    <Compile Include="Models\Autocomplete\AutocompleteViewModel.cs" />
+    <Compile Include="Models\Common\PhoneViewModel.cs" />
+    <Compile Include="Models\Common\PriceViewModel.cs" />
+    <Compile Include="Models\DomiportaRP\DomiportaRPCategorySearchViewModel.cs" />
+    <Compile Include="Models\DomiportaRP\DomiportaRPInvestmentViewModel.cs" />
+    <Compile Include="Models\DomiportaRP\DomiportaRPSearchViewModel.cs" />
+    <Compile Include="Models\Domiporta\WebDetailsViewModel.cs" />
+    <Compile Include="Models\Domiporta\WebGalleryViewModel.cs" />
+    <Compile Include="Models\Domiporta\WebInvestmentViewModel.cs" />
+    <Compile Include="Models\Domiporta\WebRedirectViewModel.cs" />
+    <Compile Include="Models\Domiporta\WebSearchResultViewModel.cs" />
+    <Compile Include="Models\Quartic\QuarticViewModel.cs" />
+    <Compile Include="Models\Search\SearchViewModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SearchController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="SharedController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="T4MVC.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Validators\AdvertViewModelValidator.cs" />
+    <Compile Include="Validators\EmailViewModelValidator.cs" />
+    <Compile Include="Validators\CommonValidatorHelper.cs" />
+    <Compile Include="Validators\GuessMarketViewModelValidator.cs" />
+    <Compile Include="Validators\InvestmentViewModelValidator.cs" />
+    <Compile Include="Validators\SearchViewModelValidator.cs" />
+    <Compile Include="Validators\WebDetailsViewModelValidator.cs" />
+    <Compile Include="Validators\WebSearchResultViewModelValidator.cs" />
+    <Compile Include="ViewsDeployedOutsideMobileVersionController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ViewSwitcherController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Data\Blacklist.xml" />
+    <Content Include="App_Readme\glimpse.mvc3.readme.txt" />
+    <Content Include="App_Readme\glimpse.readme.txt" />
+    <Content Include="Content\images\ajax-loader.png" />
+    <Content Include="Content\images\gallery-icons.png" />
+    <Content Include="Content\images\icons-18-black.png" />
+    <Content Include="Content\images\icons-18-white.png" />
+    <Content Include="Content\images\icons-36-black.png" />
+    <Content Include="Content\images\icons-36-white.png" />
+    <Content Include="Content\images\ikonka-lista.png" />
+    <Content Include="Content\images\ikonka-lupka.png" />
+    <Content Include="Content\images\linear_bg_2.png" />
+    <Content Include="Content\images\logo-domiporta-pl.png" />
+    <Content Include="__utm.gif" />
+    <Content Include="Content\jQTouch\apple\img\activeButton.png" />
+    <Content Include="Content\jQTouch\apple\img\backButton.png" />
+    <Content Include="Content\jQTouch\apple\img\cancel.png" />
+    <Content Include="Content\jQTouch\apple\img\chevron.png" />
+    <Content Include="Content\jQTouch\apple\img\grayButton.png" />
+    <Content Include="Content\jQTouch\apple\img\greenButton.png" />
+    <Content Include="Content\jQTouch\apple\img\listArrowSel.png" />
+    <Content Include="Content\jQTouch\apple\img\listGroup.png" />
+    <Content Include="Content\jQTouch\apple\img\loading.gif" />
+    <Content Include="Content\jQTouch\apple\img\on_off.png" />
+    <Content Include="Content\jQTouch\apple\img\pinstripes.png" />
+    <Content Include="Content\jQTouch\apple\img\redButton.png" />
+    <Content Include="Content\jQTouch\apple\img\selection.png" />
+    <Content Include="Content\jQTouch\apple\img\thumb.png" />
+    <Content Include="Content\jQTouch\apple\img\toggle.png" />
+    <Content Include="Content\jQTouch\apple\img\toggleOn.png" />
+    <Content Include="Content\jQTouch\apple\img\toolbar.png" />
+    <Content Include="Content\jQTouch\apple\img\toolButton.png" />
+    <Content Include="Content\jQTouch\apple\img\whiteButton.png" />
+    <Content Include="Content\jQTouch\apple\theme.css" />
+    <Content Include="Content\jQTouch\default\img\backButton.png" />
+    <Content Include="Content\jQTouch\default\img\backButtonActive.png" />
+    <Content Include="Content\jQTouch\default\img\bigButton.png" />
+    <Content Include="Content\jQTouch\default\img\bigButtonActive.png" />
+    <Content Include="Content\jQTouch\default\img\button.png" />
+    <Content Include="Content\jQTouch\default\img\buttonActive.png" />
+    <Content Include="Content\jQTouch\default\img\chevron.png" />
+    <Content Include="Content\jQTouch\default\img\chevronActive.png" />
+    <Content Include="Content\jQTouch\default\img\chevronCircle.png" />
+    <Content Include="Content\jQTouch\default\img\chevronCircleActive.png" />
+    <Content Include="Content\jQTouch\default\img\loading.gif" />
+    <Content Include="Content\jQTouch\default\img\toggleSwitch.png" />
+    <Content Include="Content\jQTouch\default\img\toolbarBackground.png" />
+    <Content Include="Content\jQTouch\default\theme.css" />
+    <Content Include="Content\jQTouch\jqtouch.css" />
+    <Content Include="Content\jQTouch\jqt\img\activeButton.png" />
+    <Content Include="Content\jQTouch\jqt\img\back_button.png" />
+    <Content Include="Content\jQTouch\jqt\img\back_button_clicked.png" />
+    <Content Include="Content\jQTouch\jqt\img\blueButton.png" />
+    <Content Include="Content\jQTouch\jqt\img\button.png" />
+    <Content Include="Content\jQTouch\jqt\img\button_clicked.png" />
+    <Content Include="Content\jQTouch\jqt\img\chevron.png" />
+    <Content Include="Content\jQTouch\jqt\img\chevron_circle.png" />
+    <Content Include="Content\jQTouch\jqt\img\grayButton.png" />
+    <Content Include="Content\jQTouch\jqt\img\greenButton.png" />
+    <Content Include="Content\jQTouch\jqt\img\loading.gif" />
+    <Content Include="Content\jQTouch\jqt\img\on_off.png" />
+    <Content Include="Content\jQTouch\jqt\img\redButton.png" />
+    <Content Include="Content\jQTouch\jqt\img\rowhead.png" />
+    <Content Include="Content\jQTouch\jqt\img\toggle.png" />
+    <Content Include="Content\jQTouch\jqt\img\toggleOn.png" />
+    <Content Include="Content\jQTouch\jqt\img\toolbar.png" />
+    <Content Include="Content\jQTouch\jqt\img\whiteButton.png" />
+    <Content Include="Content\jQTouch\jqt\theme.css" />
+    <Content Include="Content\jquery.mobile-1.0.1.css" />
+    <Content Include="Content\jquery.mobile-1.0.1.min.css" />
+    <Content Include="Content\jquery.mobile.custom-1.0.css" />
+    <Content Include="Content\jquery.mobile.structure-1.0.1.css" />
+    <Content Include="Content\jquery.mobile.structure-1.0.1.min.css" />
+    <Content Include="Content\jquery.mobile.structure.custom-1.0.css" />
+    <Content Include="Content\PhotoSwipe\error.gif" />
+    <Content Include="Content\PhotoSwipe\icons%402x.png" />
+    <Content Include="Content\PhotoSwipe\icons.png" />
+    <Content Include="Content\PhotoSwipe\loader.gif" />
+    <Content Include="Content\PhotoSwipe\photoswipe.css" />
+    <Content Include="Content\Site.min.css" />
+    <Content Include="Content\style-ie7.css" />
+    <Content Include="Content\style-ie8.css" />
+    <Content Include="Content\Style.css" />
+    <Content Include="Content\Style.min.css" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\jquery-ui.css" />
+    <Content Include="Content\themes\base\jquery.ui.accordion.css" />
+    <Content Include="Content\themes\base\jquery.ui.all.css" />
+    <Content Include="Content\themes\base\jquery.ui.autocomplete.css" />
+    <Content Include="Content\themes\base\jquery.ui.base.css" />
+    <Content Include="Content\themes\base\jquery.ui.button.css" />
+    <Content Include="Content\themes\base\jquery.ui.core.css" />
+    <Content Include="Content\themes\base\jquery.ui.datepicker.css" />
+    <Content Include="Content\themes\base\jquery.ui.dialog.css" />
+    <Content Include="Content\themes\base\jquery.ui.progressbar.css" />
+    <Content Include="Content\themes\base\jquery.ui.resizable.css" />
+    <Content Include="Content\themes\base\jquery.ui.selectable.css" />
+    <Content Include="Content\themes\base\jquery.ui.slider.css" />
+    <Content Include="Content\themes\base\jquery.ui.tabs.css" />
+    <Content Include="Content\themes\base\jquery.ui.theme.css" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\minified\jquery-ui.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.accordion.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.all.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.autocomplete.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.base.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.button.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.core.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.datepicker.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.dialog.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.progressbar.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.resizable.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.selectable.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
+    <Content Include="Content\weakmobile.css" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Mobile\Default.aspx" />
+    <Content Include="README.jQTouch.txt" />
+    <Content Include="Scripts\ActivityIndicator\jquery.activity-indicator-1.0.0.js" />
+    <Content Include="Scripts\ActivityIndicator\jquery.activity-indicator-1.0.0.min.js" />
+    <Content Include="Scripts\ActivityIndicator\README.txt" />
+    <Content Include="Scripts\AdServer\adServer.js" />
+    <Content Include="Scripts\AdServer\sizzle.js" />
+    <Content Include="Scripts\ClosureCompilerMin\trader.common.min.js" />
+    <Content Include="Scripts\FloatingObject\jquery.floatobject-1.0.js" />
+    <Content Include="Scripts\html5.js" />
+    <Content Include="Scripts\jqtouch.js" />
+    <Content Include="Scripts\jquery-1.6.4-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.6.4.js" />
+    <Content Include="Scripts\jquery-1.6.4.min.js" />
+    <Content Include="Scripts\jquery-ui-1.8.16.js" />
+    <Content Include="Scripts\jquery-ui-1.8.16.min.js" />
+    <Content Include="Scripts\jquery.cookie.js" />
+    <Content Include="Scripts\jquery.mobile-1.0.1.js" />
+    <Content Include="Scripts\jquery.mobile-1.0.1.min.js" />
+    <Content Include="Scripts\jquery.mobile-1.0.js" />
+    <Content Include="Scripts\jquery.mobile-1.0.min.js" />
+    <Content Include="Scripts\jquery.mobile.message.js" />
+    <Content Include="Scripts\jquery.mobile.message.min.js" />
+    <Content Include="Scripts\jquery.numberformatter-1.2.3.js" />
+    <Content Include="Scripts\jquery.numeric.js" />
+    <Content Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jshashtable\jshashtable.js" />
+    <Content Include="Scripts\jshashtable\jshashtable_src.js" />
+    <Content Include="Scripts\knockout-1.3.0beta.debug.js" />
+    <Content Include="Scripts\knockout-1.3.0beta.js" />
+    <Content Include="Scripts\knockout.mapping-latest.debug.js" />
+    <Content Include="Scripts\knockout.mapping-latest.js" />
+    <Content Include="Scripts\mapa2.js" />
+    <Content Include="Scripts\modernizr-2.0.6-development-only.js" />
+    <Content Include="Scripts\PhotoSwipe\code.photoswipe.jquery-3.0.4.js" />
+    <Content Include="Scripts\PhotoSwipe\code.photoswipe.jquery-3.0.4.min.js" />
+    <Content Include="Scripts\PhotoSwipe\klass.min.js" />
+    <Content Include="Scripts\trader.common.js" />
+    <Content Include="ga.aspx" />
+    <Content Include="Views\ViewsDeployedOutsideMobileVersion\ServiceNotAvailable\logo-domiporta-pl.png" />
+    <Content Include="Views\ViewsDeployedOutsideMobileVersion\ServiceNotAvailable\logo-tlo.png" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\MicrosoftAjax.js" />
+    <Content Include="Scripts\MicrosoftAjax.debug.js" />
+    <Content Include="Scripts\MicrosoftMvcAjax.js" />
+    <Content Include="Scripts\MicrosoftMvcAjax.debug.js" />
+    <Content Include="Scripts\MicrosoftMvcValidation.js" />
+    <Content Include="Scripts\MicrosoftMvcValidation.debug.js" />
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <None Include="T4MVC.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>T4MVC.cs</LastGenOutput>
+    </None>
+    <None Include="T4MVC.tt.settings.t4" />
+    <Content Include="Views\Shared\Footer.Mobile.cshtml" />
+    <Content Include="Views\Search\CityDistrictAutocomplete.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\GlossaryAsRadio.cshtml" />
+    <Content Include="Views\Search\SearchResultHeader.Mobile.cshtml" />
+    <Content Include="Views\Search\SearchResultSortHeader.Mobile.cshtml" />
+    <Content Include="Views\Search\SearchResultPaginationFloatingFooter.Mobile.cshtml" />
+    <Content Include="Views\Login\Login.cshtml" />
+    <Content Include="Views\Shared\Header.Mobile.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\CreationDate.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\Decimal.cshtml" />
+    <Content Include="Views\Advert\InvestmentDetails.cshtml" />
+    <Content Include="Views\Advert\InvestmentDetails.Mobile.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\Date.cshtml" />
+    <Content Include="Views\Advert\InvestmentPagination.cshtml" />
+    <Content Include="Views\Advert\InvestmentList.Mobile.cshtml" />
+    <Content Include="Views\Domiporta\WebRedirect.cshtml" />
+    <Content Include="Views\Domiporta\WebRedirect.Mobile.cshtml" />
+    <Content Include="Views\Shared\SetNotMobileCookie.cshtml" />
+    <Content Include="Views\Shared\Google\GoogleAnalyticsMobileVersion.cshtml" />
+    <Content Include="Views\Shared\ErrorHandler.cshtml" />
+    <Content Include="Views\Shared\Quartic\QuarticSearchParams.cshtml" />
+    <Content Include="Views\Shared\Quartic\QuarticIndexParams.cshtml" />
+    <Content Include="Views\Shared\Quartic\QuarticProtocol.cshtml" />
+    <Content Include="Views\Shared\Quartic\QuarticDetails.cshtml" />
+    <Content Include="Views\Shared\EditorTemplates\GlossaryFilter.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\Integer.cshtml" />
+    <Content Include="Views\ViewsDeployedOutsideMobileVersion\codeDeployedToFullDomiporta.cshtml" />
+    <Content Include="Views\ViewsDeployedOutsideMobileVersion\ServiceNotAvailable\ServiceNotAvailableIIS.html" />
+    <Content Include="Views\Shared\_Layout.WeakMobile.cshtml" />
+    <Content Include="Views\Home\Index.WeakMobile.cshtml" />
+    <Content Include="Views\Search\Search.WeakMobile.cshtml" />
+    <Content Include="Views\Search\SearchResult.WeakMobile.cshtml" />
+    <Content Include="Views\Advert\Details.WeakMobile.cshtml" />
+    <Content Include="Views\Advert\Gallery.WeakMobile.cshtml" />
+    <Content Include="Views\Advert\InvestmentDetails.WeakMobile.cshtml" />
+    <Content Include="Views\Shared\Quartic\QuarticResults.cshtml" />
+    <Content Include="Views\Search\SetSearchTitle.cshtml" />
+    <Content Include="Views\Advert\InvestmentGallery.Mobile.cshtml" />
+    <Content Include="Views\Advert\InvestmentGallery.cshtml" />
+    <Content Include="Views\Advert\InvestmentGallery.WeakMobile.cshtml" />
+    <Content Include="Views\Shared\JavaScriptInlineCode\FormatInt.cshtml" />
+    <Content Include="Views\Service\PingCheckSolr.cshtml" />
+    <Content Include="Views\Shared\Google\GoogleAnalyticsJavascriptVersion.cshtml" />
+    <Content Include="Views\Shared\_Layout.AndroidLess22.cshtml" />
+    <Content Include="Views\Advert\Details.AndroidLess22.cshtml" />
+    <Content Include="Views\Advert\Gallery.AndroidLess22.cshtml" />
+    <Content Include="Views\Advert\InvestmentDetails.AndroidLess22.cshtml" />
+    <Content Include="Views\Advert\InvestmentGallery.AndroidLess22.cshtml" />
+    <Content Include="Views\Search\Search.AndroidLess22.cshtml" />
+    <Content Include="Views\Search\SearchResult.AndroidLess22.cshtml" />
+    <Content Include="Views\Home\Index.AndroidLess22.cshtml" />
+    <Content Include="Views\Shared\AdServer\AdServerHead.cshtml" />
+    <Content Include="Views\Shared\AdServer\AdServerBody.cshtml" />
+    <Content Include="Views\Shared\AdServer\AdServerColumnMiddle.cshtml" />
+    <Content Include="Views\Shared\AdServer\AdServerColumnTop.cshtml" />
+    <Content Include="Views\Shared\AdServer\AdServerColumnBottom.cshtml" />
+    <Content Include="Views\Shared\Quartic\QuarticForHP.cshtml" />
+    <Content Include="Views\Shared\Quartic\QuarticForSearch.cshtml" />
+    <None Include="_bin_deployableAssemblies\Microsoft.Web.Infrastructure.dll" />
+    <None Include="_bin_deployableAssemblies\System.Web.WebPages.Razor.dll" />
+    <None Include="_bin_deployableAssemblies\System.Web.WebPages.dll" />
+    <None Include="_bin_deployableAssemblies\System.Web.WebPages.Deployment.dll" />
+    <None Include="_bin_deployableAssemblies\System.Web.Razor.dll" />
+    <None Include="_bin_deployableAssemblies\System.Web.Helpers.dll" />
+    <None Include="_bin_deployableAssemblies\System.Web.Mvc.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Search\Search.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_Layout.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AdvertUrlService\AdvertUrlService.csproj">
+      <Project>{03B22AFC-6160-4AB1-A220-310EBB603F01}</Project>
+      <Name>AdvertUrlService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{05ED3A78-68A5-47A0-B410-ED039B6D94B1}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{B5360579-BA8C-44ED-B0DE-11AD9B472E3A}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Services\Services.csproj">
+      <Project>{29B68054-DA09-407D-A4C8-798DC4B2B827}</Project>
+      <Name>Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Solr\Solr.csproj">
+      <Project>{04B527CB-47A5-47FC-A771-6E6F669180C4}</Project>
+      <Name>Solr</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WebActivator\WebActivator.csproj">
+      <Project>{339C42C9-C961-4E37-B64E-16F1EF03E4D9}</Project>
+      <Name>WebActivator</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Data\51Degrees.mobi.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_Layout.Mobile.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\EditorTemplates\GlossaryBase.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\DisplayTemplates\Email.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Search\Search.Mobile.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Search\EditorTemplates\SearchCriteria.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\_ViewSwitcher.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Advert\Details.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Advert\Details.Mobile.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Search\SearchResult.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Search\SearchResult.Mobile.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Home\Index.Mobile.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\EditorTemplates\RangeCriteria.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Search\TransactionTypeSearchCriteria.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\DisplayTemplates\Phone.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Advert\Gallery.Mobile.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Advert\Gallery.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Views\Search\DisplayTemplates\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\GroupedSearchResultList.Mobile.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\Messages.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Messages.Designer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>57485</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

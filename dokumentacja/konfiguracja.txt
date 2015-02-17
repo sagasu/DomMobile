@@ -1,0 +1,7 @@
+http://dev1.m.srv.domiporta.pl/
+http://dev2.m.srv.domiporta.pl/
+
+http://test.m.domiporta.pl/ - nie dzia³a z PC
+
+
+http://m.domiporta.pl/ - nie dzia³a z PC

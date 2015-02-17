@@ -1,0 +1,41 @@
+﻿@using Trader.Common.Attributes
+@using Trader.Web.Helpers
+@using Trader.Common
+
+@model IListElements
+
+@{
+    var htmlProperties = HtmlPropertiesProvider.GetHtmlProperties(ViewData, ViewData.ModelMetadata);
+
+    var showChooseOption = true;
+    string labelText = null;
+    if (ViewData.ModelMetadata.AdditionalValues.ContainsKey(GlossaryBaseAttribute.AdditionalValueKey))
+    {
+        var glossaryBaseAttribute = (GlossaryBaseAttribute)ViewData.ModelMetadata.AdditionalValues[GlossaryBaseAttribute.AdditionalValueKey];
+        showChooseOption = glossaryBaseAttribute.ShowChooseOption;
+        labelText = glossaryBaseAttribute.LabelText;
+    }
+}
+
+    @if (Model != null && Model.ListOfListElement != null)
+    {
+        IList<ListElement> listElements = Model.ListOfListElement.ToList();
+
+        if(listElements.Any())
+        {
+            if (showChooseOption)
+            {
+                listElements.Insert(0, ListElement.GetSelectAnyElement(labelText));
+            }
+            @Html.DropDownListFor(x => x.SelectedId,
+                                    listElements.Select(x => new SelectListItem {Text = x.Name, Value = x.Id.ToString(), Selected = Model.SelectedId == x.Id}),
+                                         new { @class = htmlProperties.FieldCss, @data_role="none" })
+        }
+        else
+        {
+            @Html.DropDownListFor(x => x.SelectedId, Enumerable.Empty<SelectListItem>(), new { @class = htmlProperties.FieldCss, @data_role = "none" })
+        }
+    }else
+    {
+        @Html.DropDownListFor(x => x.SelectedId, Enumerable.Empty<SelectListItem>(), new { @class = htmlProperties.FieldCss, @data_role = "none" })
+    }

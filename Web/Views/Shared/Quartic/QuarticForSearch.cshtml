@@ -1,0 +1,16 @@
+﻿@using Trader.Web.Global
+
+@* Quartic renders here*@
+@Html.Partial(MVC.Shared.Views.Quartic.QuarticResults)
+<div id="@Consts.JavascriptIds.QuarticFrameId"></div>
+
+@Html.Partial(MVC.Shared.Views.Quartic.QuarticProtocol)
+
+@*unobstractive count how many times quartic links were hit, by analytics*@
+<script type="text/javascript">
+    $('#@Consts.JavascriptIds.MainBodyId').live('@Consts.JavascriptEvents.Pagecreate', function (event) {
+        $('#@Consts.JavascriptIds.QuarticFrameId').live('click', function (event2) {
+            _gaq.push(['_trackEvent', 'Quartic', 'tpl_user_search']);
+        });
+    });
+</script>

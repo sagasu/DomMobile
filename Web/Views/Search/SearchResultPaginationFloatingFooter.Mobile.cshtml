@@ -1,0 +1,32 @@
+﻿@using Trader.Web.Global
+@using Trader.Web.Models.Search
+@using Trader.Common
+@using Trader.Web.Extensions
+
+@model SearchViewModel
+
+<div class="searchResultNextPreviousButton" id="@Consts.JavascriptIds.FloatSearchResult">
+    @if (Model.GroupedSearchResults != null && (Model.GroupedSearchResults.Groups.Count() >= Model.SearchOptions.PaginationNumerOfRows))
+    {
+@*        <script type="text/javascript">
+            $('#@Consts.JavascriptIds.MainContentId').live('swipeleft', function (event, ui) {
+                alert('swipeleft');
+            });
+        </script>*@
+        <div class="nextResult"><a data-ajax="false" data-role="button" href='@(Url.Url(MVC.Search.SearchResult(),Model.NextPaginationBuilder()))'>Następne</a></div>
+    }
+    @if (Model.SearchOptions.PaginationStart > 0)
+    {
+@*        <script type="text/javascript">
+            $('#@Consts.JavascriptIds.MainContentId').live('swiperight', function (event, ui) {
+                alert('swiperight');
+            });
+        </script>*@
+        <div class="previousResult"><a data-ajax="false" data-role="button" href='@(Url.Url(MVC.Search.SearchResult(),Model.PreviousPaginationBuilder()))'>Poprzednie</a></div>
+    }
+</div>
+
+@* // Floating is turned off *@
+@*<script type="text/javascript">
+    $('#@Consts.JavascriptIds.FloatSearchResult').makeFloat('current');
+</script>*@

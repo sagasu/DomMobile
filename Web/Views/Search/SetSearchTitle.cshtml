@@ -1,0 +1,21 @@
+﻿@using Trader.Web.Models.Search
+@using Trader.Model.Glossaries.Providers
+@using Trader.Web.Global
+@model SearchViewModel
+
+<script type="text/javascript">
+    trader.setSearchTitle = function (selection) {
+        if (selection === "@(TransactionTypeProvider.SellId)") {
+            $('#@(Consts.JavascriptIds.SearchTitleTransactionTypeId)').text('@(TransactionTypeProvider.TransactionTypes.SingleOrDefault(x => x.Id == TransactionTypeProvider.SellId).Name)');
+        } else {
+            @{
+                var rentName = TransactionTypeProvider.TransactionTypes.SingleOrDefault(x => x.Id == TransactionTypeProvider.RentId).Name;
+                if(Model.CategoryId == CategoryProvider.LandId){
+                    rentName = TransactionTypeProvider.TransactionTypes.SingleOrDefault(x => x.Id == TransactionTypeProvider.RentId).AlternativeName;
+                }
+            }
+
+            $('#@(Consts.JavascriptIds.SearchTitleTransactionTypeId)').text('@(rentName)');
+        }
+    }
+</script>

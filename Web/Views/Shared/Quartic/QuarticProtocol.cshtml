@@ -1,0 +1,11 @@
+﻿<script type="text/javascript">
+    var upsScript = document.createElement('script')
+    var upsProtocol =
+((document.location.protocol == 'https:') ? 'https://secu' : 'http://')
+    upsScript.setAttribute('type', 'text/javascript')
+    upsScript.setAttribute('src',
+upsProtocol + 'rec.quartic.pl/quartic.js')
+    upsScript.setAttribute('async', 'async')
+    var upsAnchor = document.getElementsByTagName('script')[0]
+    upsAnchor.parentNode.insertBefore(upsScript, upsAnchor)
+</script>
